@@ -20,15 +20,14 @@ window.SITE_CONFIG = {
   taglineZh: "经济学 · 金融工程 · 机器学习",
 
   /* ---- 所属单位 / Affiliation ------------------------------------------ */
-  // TODO: 填学校/院系全称，例如 "XX大学 金融学院"
+  // 按课题组要求，不公开学校 / 院系信息
   affiliationEn: "Yile Wang Lab",
   affiliationZh: "王毅乐课题组",
 
   /* ---- 联系方式 / Contact ---------------------------------------------- */
   contact: {
-    // TODO: 填课题组公开邮箱（填了之后"联系我们"板块会显示）
-    email: "",
-    // TODO: 填办公地址（可留空）
+    email: "wyl13393401611@126.com",
+    // 不公开办公地址
     addressEn: "",
     addressZh: "",
     // 外部主页，留空则不显示该按钮

@@ -49,6 +49,13 @@ window.I18N = {
     "about.fact.openval": "论文、数据、代码",
     "about.fact.contact": "联系方式",
 
+    "story.eyebrow": "写在前面",
+    "story.title": "我们的经验，来自没人指导的那几年",
+    "story.p1": "大一那年，我联系了一位老师，说我想做科研。他给了我一个题目，之后就再也没有管过我。",
+    "story.p2": "后来我才慢慢明白：培养一个本科生的科研能力是一件漫长的事，很多老师不愿意在这上面投入时间。我们课题组的学生大多如此——都是本科生，在没有导师指导的情况下，自己摸索出了众多科研成果，数量比得上本校的副教授和硕士生导师。",
+    "story.p3": "所以我把这些经验整理出来，放在这里。希望它能帮到你，帮到每一个爱好科研的学生。",
+    "story.sign": "—— 王毅乐",
+
     "research.eyebrow": "研究方向",
     "research.title": "我们关心的问题",
     "research.lead": "从衍生品定价到系统性风险，从计量识别到深度学习预测，课题组的工作围绕下面四条主线展开。",
@@ -147,6 +154,13 @@ window.I18N = {
     "about.fact.open": "Open materials",
     "about.fact.openval": "Papers, data, code",
     "about.fact.contact": "Contact",
+
+    "story.eyebrow": "A note from the PI",
+    "story.title": "What we learned in the years without a supervisor",
+    "story.p1": "In my first year I approached a professor and told him I wanted to do research. He gave me a topic, and after that he never checked in on me again.",
+    "story.p2": "It took me a while to understand why: turning an undergraduate into a researcher is slow work, and many professors would rather not spend the time on it. Most of the students in this group are in exactly that position — undergraduates who, with no supervisor guiding them, worked it out themselves and produced a substantial body of research, comparable in volume to many of our associate professors and master's supervisors.",
+    "story.p3": "So I have written down what we learned and put it here. I hope it helps you — and every student who loves research.",
+    "story.sign": "— Yile Wang",
 
     "research.eyebrow": "Research",
     "research.title": "Questions we work on",
