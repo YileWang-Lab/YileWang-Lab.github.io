@@ -32,22 +32,37 @@
 {
   titleEn: "Option Hedging with Deep Neural Networks",   // 英文标题
   titleZh: "基于深度神经网络的期权对冲",                  // 中文标题（可留空 ""）
-  authors: ["**Yile Wang**", "San Zhang"],               // **加粗** = 本组成员
-  venue: "Journal of Financial Engineering",             // 期刊/会议全称
+  authors: ["**Yile Wang**†", "San Zhang"],              // **加粗** = 本组成员，† = 通讯作者
+  venue: "Journal of Financial Engineering, Vol. 3, Issue 2",  // 期刊/会议全称
   venueShort: "JFE",                                     // 简称小标签（可留空）
   year: 2026,                                            // 数字，不要加引号
+  date: "2026-05-01",                                    // 精确日期，用于同年内排序（可省略）
   type: "journal",                                       // journal | conference | working | book
-  status: "accepted",                                    // accepted | published | forthcoming | working
-  links: { doi: "https://doi.org/...", pdf: "", code: "" },  // 没有的键留空或删掉
+  status: "published",                                   // accepted | published | forthcoming | working
+  links: {
+    doi:     "https://doi.org/10.xxxx/yyyy",             // DOI
+    article: "https://www.mdpi.com/...",                 // 期刊页面（DOI 未注册时用它）
+    pdf:     "", code: "", arxiv: "", ssrn: "", slides: ""   // 没有的键删掉或留空
+  },
   tags: ["期权", "深度学习"],                             // 关键词（可为 []）
+  banner:      "assets/banners/xxx.jpg",                 // 卡片顶部横幅（可省略）
+  certificate: "assets/certificates/xxx.jpg",            // 录用证明，点击灯箱放大（可省略）
   featured: true,                                        // true = 置顶并加金色边框（可省略）
-  noteEn: "Best Paper Award",                            // 备注（可省略）
-  noteZh: "最佳论文奖"
+  noteEn: "MDPI · Open Access",                          // 备注（可省略）
+  noteZh: "MDPI 开放获取"
 }
 ```
 
 > **注意**：中文文案里如果要用引号，请用中文引号「」或 “ ”，
 > 不要用英文双引号 `"`，否则会破坏 JavaScript 语法。
+
+### 图片（横幅 / 录用证明）
+
+把图片放进 `assets/banners/` 或 `assets/certificates/`，然后在条目里写相对路径即可。
+两者都会在点击后打开灯箱放大查看。
+
+建议尺寸：横幅 1200px 宽（约 2:1），证书 1700px 宽。命名用 `期刊-卷期页.jpg`
+（例如 `systems-319.jpg`），方便和条目对应。
 
 ### 状态与类型的显示文字
 

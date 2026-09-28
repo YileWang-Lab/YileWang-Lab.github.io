@@ -244,6 +244,17 @@
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+<!-- 灯箱：用于放大查看期刊横幅与录用证明 -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" hidden
+     data-i18n-attr="aria-label:a11y.lightbox">
+  <button type="button" class="lightbox__close" id="lightbox-close"
+          data-i18n-attr="aria-label:a11y.close">✕</button>
+  <figure class="lightbox__figure">
+    <img class="lightbox__img" id="lightbox-img" alt="">
+    <figcaption class="lightbox__caption" id="lightbox-caption"></figcaption>
+  </figure>
+</div>
+
 <!-- 数据文件（要改内容，改这两个即可） -->
 <script src="data/site-config.js"></script>
 <script src="data/publications.js"></script>

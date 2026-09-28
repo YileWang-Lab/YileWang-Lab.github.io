@@ -300,14 +300,16 @@
       return hay.indexOf(q) !== -1;
     }).sort(function (a, b) {
       if (!!b.featured !== !!a.featured) return b.featured ? 1 : -1;
-      var ya = parseInt(a.year, 10) || 0, yb = parseInt(b.year, 10) || 0;
-      if (yb !== ya) return yb - ya;
+      // 优先按精确日期排（ISO 字符串可直接比较），没有 date 就退回年份
+      var da = a.date || String(a.year || "");
+      var db = b.date || String(b.year || "");
+      if (da !== db) return da < db ? 1 : -1;
       return String(a.titleEn || "").localeCompare(String(b.titleEn || ""));
     });
   }
 
-  var LINK_LABEL = { doi: "link.doi", pdf: "link.pdf", code: "link.code", arxiv: "link.arxiv", ssrn: "link.ssrn", slides: "link.slides" };
-  var LINK_ICON = { doi: "🔗", pdf: "📄", code: "💻", arxiv: "📄", ssrn: "📄", slides: "📊" };
+  var LINK_LABEL = { doi: "link.doi", article: "link.article", pdf: "link.pdf", code: "link.code", arxiv: "link.arxiv", ssrn: "link.ssrn", slides: "link.slides" };
+  var LINK_ICON = { doi: "🔗", article: "🌐", pdf: "📄", code: "💻", arxiv: "📄", ssrn: "📄", slides: "📊" };
 
   function renderPub(p) {
     var ti = pubTitle(p);
@@ -329,6 +331,22 @@
       links += '<a class="pub__link" href="' + esc(url) + '" target="_blank" rel="noopener">' +
         '<span aria-hidden="true">' + LINK_ICON[k] + "</span>" + esc(t(LINK_LABEL[k])) + "</a>";
     });
+    if (p.certificate) {
+      links += '<button type="button" class="pub__link"' +
+        ' data-lightbox="' + esc(p.certificate) + '"' +
+        ' data-caption="' + esc(ti.main) + '">' +
+        '<span aria-hidden="true">🎓</span>' + esc(t("link.certificate")) + "</button>";
+    }
+
+    // 期刊提供的 article banner，放在卡片顶部
+    var banner = p.banner
+      ? '<button type="button" class="pub__banner"' +
+        ' data-lightbox="' + esc(p.banner) + '"' +
+        ' data-caption="' + esc(ti.main) + '"' +
+        ' aria-label="' + esc(t("a11y.zoom")) + '">' +
+        '<img src="' + esc(p.banner) + '" alt="" loading="lazy" decoding="async" width="1200" height="607">' +
+        "</button>"
+      : "";
 
     var note = state.lang === "zh" ? (p.noteZh || p.noteEn) : (p.noteEn || p.noteZh);
     var tags = (p.tags || []).length
@@ -336,13 +354,14 @@
       : "";
 
     return '<article class="pub' + (p.featured ? " pub--featured" : "") + '">' +
+      banner +
       '<div class="pub__badges">' + badges.join("") + "</div>" +
       '<h3 class="pub__title">' + esc(ti.main) +
         (ti.alt ? '<span class="pub__title-zh">' + esc(ti.alt) + "</span>" : "") +
       "</h3>" +
       (authors ? '<p class="pub__authors">' + authors + "</p>" : "") +
       (p.venue ? '<p class="pub__venue">' + esc(p.venue) + (p.year ? ' <span class="yr">· ' + esc(p.year) + "</span>" : "") + "</p>" : "") +
-      (note ? '<p class="pub__note">🏅 ' + esc(note) + "</p>" : "") +
+      (note ? '<p class="pub__note">ℹ️ ' + esc(note) + "</p>" : "") +
       (links ? '<div class="pub__links">' + links + "</div>" : "") +
       tags +
       "</article>";
@@ -486,6 +505,45 @@
         }
         renderPubs();
       });
+    }
+
+    // 灯箱：点击横幅图或"录用证明"放大查看
+    var lb = $("#lightbox");
+    if (lb) {
+      var lbImg = $("#lightbox-img");
+      var lbCap = $("#lightbox-caption");
+
+      function closeLb() {
+        lb.classList.remove("is-open");
+        lb.setAttribute("hidden", "");
+        document.body.style.overflow = "";
+        if (lbImg) lbImg.removeAttribute("src");
+      }
+      function openLb(src, caption) {
+        if (!src || !lbImg) return;
+        lbImg.setAttribute("src", src);
+        lbImg.setAttribute("alt", caption || "");
+        if (lbCap) lbCap.textContent = caption || "";
+        lb.removeAttribute("hidden");
+        void lb.offsetWidth; // 触发 reflow，让淡入过渡生效
+        lb.classList.add("is-open");
+        document.body.style.overflow = "hidden";
+      }
+
+      document.addEventListener("click", function (e) {
+        var trigger = e.target.closest("[data-lightbox]");
+        if (trigger) {
+          e.preventDefault();
+          openLb(trigger.getAttribute("data-lightbox"), trigger.getAttribute("data-caption"));
+          return;
+        }
+        if (e.target.closest("#lightbox-close") || e.target === lb) closeLb();
+      });
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && lb.classList.contains("is-open")) closeLb();
+      });
+      lb._close = closeLb;
     }
 
     // 键盘："/" 聚焦搜索框

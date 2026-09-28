@@ -16,6 +16,9 @@ window.I18N = {
     "a11y.theme": "切换深色 / 浅色主题",
     "a11y.lang": "切换语言",
     "a11y.menu": "打开菜单",
+    "a11y.zoom": "点击放大查看",
+    "a11y.lightbox": "图片查看",
+    "a11y.close": "关闭",
 
     "nav.about": "关于",
     "nav.research": "研究方向",
@@ -35,9 +38,9 @@ window.I18N = {
 
     "about.eyebrow": "关于我们",
     "about.title": "让金融研究可复现、可复用",
-    "about.p1": "课题组围绕**资产定价、金融风险与金融机器学习**展开研究。我们相信，一个好的实证结果不仅要有方法上的说服力，也要能被别人按同样的步骤重新做出来。",
+    "about.p1": "课题组围绕**金融科技、能源与环境经济学、机器学习与智能预测、宏观发展评估**四个方向展开研究。我们相信，一个好的实证结果不仅要有方法上的说服力，也要能被别人按同样的步骤重新做出来。",
     "about.p2": "因此除了论文，我们把清洗好的双语数据、字段字典、来源核查记录和可重跑的分析代码一并整理公开。任何一位合作者或学生，都可以沿着「来源 → 清洗 → 建模」的链条把结果复现出来。",
-    "about.p3": "目前课题组的研究覆盖期权定价与对冲、系统性风险度量、网络结构与金融韧性，以及基于深度学习的收益率预测与组合构建等方向。",
+    "about.p3": "目前已发表的工作覆盖 IPO 定价效率与投资者情绪识别、中国省级能源贫困测度、数字经济与碳排放的耦合协调、光伏发电智能预测，以及古文字分割与识别等方向。",
     "about.facts": "基本信息",
     "about.fact.name": "课题组",
     "about.fact.field": "研究领域",
@@ -72,11 +75,13 @@ window.I18N = {
     "status.working": "工作论文",
 
     "link.doi": "DOI",
+    "link.article": "文章页面",
     "link.pdf": "PDF",
     "link.code": "代码",
     "link.arxiv": "arXiv",
     "link.ssrn": "SSRN",
     "link.slides": "幻灯片",
+    "link.certificate": "录用证明",
 
     "team.eyebrow": "团队成员",
     "team.title": "课题组",
@@ -110,6 +115,9 @@ window.I18N = {
     "a11y.theme": "Toggle dark / light theme",
     "a11y.lang": "Switch language",
     "a11y.menu": "Open menu",
+    "a11y.zoom": "Click to enlarge",
+    "a11y.lightbox": "Image viewer",
+    "a11y.close": "Close",
 
     "nav.about": "About",
     "nav.research": "Research",
@@ -129,9 +137,9 @@ window.I18N = {
 
     "about.eyebrow": "About",
     "about.title": "Research that others can reproduce",
-    "about.p1": "The lab works on **asset pricing, financial risk and machine learning in finance**. We believe a credible empirical result has to be more than methodologically sound — someone else should be able to rebuild it from the same steps.",
+    "about.p1": "The lab works on **financial technology, energy and environmental economics, machine learning for forecasting, and macro development assessment**. We believe a credible empirical result has to be more than methodologically sound — someone else should be able to rebuild it from the same steps.",
     "about.p2": "So alongside our papers we publish the cleaned bilingual datasets, field dictionaries, source-audit records and re-runnable analysis code. Collaborators and students can follow the chain from source to cleaning to model and reproduce the numbers themselves.",
-    "about.p3": "Current work covers option pricing and hedging, systemic risk measurement, network structure and financial resilience, and deep-learning-based return prediction and portfolio construction.",
+    "about.p3": "Published work so far covers IPO pricing efficiency and investor sentiment, provincial energy-poverty measurement in China, the coupling coordination between the digital economy and carbon emissions, photovoltaic power forecasting, and ancient-character segmentation and recognition.",
     "about.facts": "At a glance",
     "about.fact.name": "Group",
     "about.fact.field": "Fields",
@@ -166,11 +174,13 @@ window.I18N = {
     "status.working": "Working paper",
 
     "link.doi": "DOI",
+    "link.article": "Article page",
     "link.pdf": "PDF",
     "link.code": "Code",
     "link.arxiv": "arXiv",
     "link.ssrn": "SSRN",
     "link.slides": "Slides",
+    "link.certificate": "Certificate",
 
     "team.eyebrow": "Team",
     "team.title": "People",

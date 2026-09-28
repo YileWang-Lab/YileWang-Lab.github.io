@@ -10,10 +10,8 @@
 window.SITE_CONFIG = {
 
   /* ---- 课题组名称 / Lab name ------------------------------------------- */
-  // 英文名（显示在页头、标签页）
   labNameEn: "Yile Wang Lab",
-  // 中文名（TODO: 请填课题组正式中文名，例如"王义乐课题组"）
-  labNameZh: "Yile Wang 课题组",
+  labNameZh: "王毅乐课题组",
   // 页头左侧的缩写标记（1-3 个字符最好看）
   labMonogram: "YWL",
 
@@ -22,24 +20,24 @@ window.SITE_CONFIG = {
   taglineZh: "经济学 · 金融工程 · 机器学习",
 
   /* ---- 所属单位 / Affiliation ------------------------------------------ */
+  // TODO: 填学校/院系全称，例如 "XX大学 金融学院"
   affiliationEn: "Yile Wang Lab",
-  affiliationZh: "Yile Wang 课题组",
+  affiliationZh: "王毅乐课题组",
 
   /* ---- 联系方式 / Contact ---------------------------------------------- */
   contact: {
-    // TODO: 填课题组公开邮箱
+    // TODO: 填课题组公开邮箱（填了之后"联系我们"板块会显示）
     email: "",
     // TODO: 填办公地址（可留空）
     addressEn: "",
     addressZh: "",
-    // 外部主页 / Google Scholar / ORCID 等，留空则不显示该按钮
+    // 外部主页，留空则不显示该按钮
     scholar: "",
     orcid: "",
     github: "https://github.com/YileWang-Lab"
   },
 
   /* ---- 关联仓库 / Related repositories --------------------------------- */
-  // 会显示在"数据与代码"板块
   repos: [
     {
       name: "yile-wang-lab-data",
@@ -62,44 +60,44 @@ window.SITE_CONFIG = {
   ],
 
   /* ---- 研究方向 / Research areas --------------------------------------- */
-  // icon 用 emoji，零依赖、跨平台、不会加载失败
+  // 按课题组已发表论文的实际方向归纳，icon 用 emoji（零依赖、不会加载失败）
   research: [
     {
       icon: "📈",
-      titleEn: "Asset Pricing & Derivatives",
-      titleZh: "资产定价与衍生品",
-      descEn: "Option pricing under illiquidity, volatility modelling, and hedging with neural networks.",
-      descZh: "非流动性条件下的期权定价、波动率建模，以及基于神经网络的动态对冲。"
+      titleEn: "FinTech & Market Microstructure",
+      titleZh: "金融科技与市场微观结构",
+      descEn: "IPO pricing efficiency, investor sentiment and machine-learning identification strategies for financial markets.",
+      descZh: "IPO 定价效率、投资者情绪，以及面向金融市场的机器学习因果识别方法。"
     },
     {
-      icon: "🏦",
-      titleEn: "Financial Risk & Stability",
-      titleZh: "金融风险与稳定",
-      descEn: "Systemic risk measurement, network structure, and financial resilience of firms and regions.",
-      descZh: "系统性风险度量、网络结构与企业和区域的金融韧性。"
+      icon: "🌱",
+      titleEn: "Energy & Environmental Economics",
+      titleZh: "能源与环境经济学",
+      descEn: "Energy poverty measurement, carbon-emission accounting, and the coupling coordination between the digital economy and sustainability.",
+      descZh: "能源贫困测度、碳排放核算，以及数字经济与可持续发展的耦合协调关系。"
     },
     {
       icon: "🤖",
-      titleEn: "Machine Learning in Finance",
-      titleZh: "金融机器学习",
-      descEn: "Deep learning and statistical learning applied to return prediction and portfolio construction.",
-      descZh: "深度学习与统计学习在收益率预测和投资组合构建中的应用。"
+      titleEn: "Machine Learning & Intelligent Forecasting",
+      titleZh: "机器学习与智能预测",
+      descEn: "Explainable deep learning, spatiotemporal modelling and hybrid forecasting frameworks, plus vision models for document intelligence.",
+      descZh: "可解释深度学习、时空建模与混合预测框架，以及面向文档智能的视觉模型。"
     },
     {
       icon: "📊",
-      titleEn: "Applied Econometrics & Data",
-      titleZh: "应用计量与数据基础设施",
-      descEn: "Reproducible empirical pipelines, bilingual data standards, and open research data curation.",
-      descZh: "可复现的实证流程、双语数据标准，以及开放研究数据的整理与审计。"
+      titleEn: "Macro & Development Assessment",
+      titleZh: "宏观与发展评估",
+      descEn: "Multidimensional indices for employment, modernization and regional development, built on big-data and dimension-reduction methods.",
+      descZh: "面向就业、现代化与区域发展的多维指标体系，基于大数据与降维方法构建。"
     }
   ],
 
   /* ---- 团队 / Team ------------------------------------------------------ */
-  // TODO: 按需增删；role / name / 主页链接
+  // TODO: 按需增补成员；url 留空则不显示主页链接
   team: [
     {
       nameEn: "Yile Wang",
-      nameZh: "Yile Wang",
+      nameZh: "王毅乐",
       roleEn: "Principal Investigator",
       roleZh: "课题组负责人",
       url: ""

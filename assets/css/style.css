@@ -503,6 +503,23 @@ button { font: inherit; color: inherit; cursor: pointer; }
   color: var(--gold-500); font-size: .95rem;
 }
 
+/* 期刊提供的 article banner：卡片顶部通栏 */
+.pub__banner {
+  display: block;
+  width: calc(100% + 48px);
+  margin: -22px -24px 20px;
+  padding: 0; border: 0; background: var(--surface-2);
+  border-radius: 13px 13px 0 0;
+  overflow: hidden; cursor: zoom-in;
+  aspect-ratio: 1200 / 607;
+}
+.pub__banner img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .35s ease;
+}
+.pub__banner:hover img { transform: scale(1.02); }
+.pub__banner:focus-visible { outline: 3px solid var(--gold-500); outline-offset: -3px; }
+
 .pub__badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
 
 .badge {
@@ -560,6 +577,8 @@ button { font: inherit; color: inherit; cursor: pointer; }
   text-decoration: none; background: var(--navy-700); color: #fff;
   border-color: var(--navy-700); transform: translateY(-1px);
 }
+/* <button> 版本要和 <a> 版本长得一样 */
+button.pub__link { font-family: inherit; cursor: zoom-in; }
 
 .pub__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
 .pub__tag {
@@ -675,6 +694,46 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 
+/* ---------------------------------------------------------------- lightbox */
+.lightbox {
+  position: fixed; inset: 0; z-index: 200;
+  display: grid; place-items: center;
+  padding: 36px 20px;
+  background: rgba(5, 10, 20, .9);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  opacity: 0; transition: opacity .22s ease;
+}
+.lightbox[hidden] { display: none; }
+.lightbox.is-open { opacity: 1; }
+
+.lightbox__figure {
+  margin: 0; display: flex; flex-direction: column; gap: 14px;
+  align-items: center; max-width: 100%; max-height: 100%;
+}
+.lightbox__img {
+  max-width: min(1600px, 95vw); max-height: 82vh;
+  width: auto; height: auto; object-fit: contain;
+  border-radius: 10px; background: #fff;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .65);
+  transform: scale(.97); transition: transform .22s ease;
+}
+.lightbox.is-open .lightbox__img { transform: none; }
+
+.lightbox__caption {
+  color: rgba(255, 255, 255, .88); font-size: .88rem;
+  text-align: center; line-height: 1.6; max-width: 70ch;
+}
+.lightbox__close {
+  position: absolute; top: 18px; right: 20px;
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .28);
+  background: rgba(255, 255, 255, .12); color: #fff;
+  font-size: 1.05rem; line-height: 1;
+  display: grid; place-items: center;
+  transition: background .15s, transform .15s;
+}
+.lightbox__close:hover { background: rgba(255, 255, 255, .26); transform: scale(1.06); }
+
 /* ---------------------------------------------------------------- reveal */
 /* 只在 JS 可用（html.js）时隐藏，保证脚本失效时内容照常可见 */
 .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
@@ -721,6 +780,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .brand__name { font-size: .88rem; max-width: 128px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .header-tools .toggle__label { display: none; }
   .pub { padding: 18px 17px; }
+  .pub__banner { width: calc(100% + 34px); margin: -18px -17px 16px; border-radius: 11px 11px 0 0; }
   .pub-toolbar { padding: 12px; }
   .fact-list li { flex-direction: column; gap: 3px; }
   .fact-list .k { width: auto; }
@@ -728,7 +788,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* ---------------------------------------------------------------- print */
 @media print {
-  .site-header, .hero__actions, .pub-toolbar, .site-footer, .toast, .nav-toggle { display: none !important; }
+  .site-header, .hero__actions, .pub-toolbar, .site-footer, .toast, .nav-toggle, .lightbox { display: none !important; }
   .hero { background: #fff !important; color: #000 !important; padding: 20px 0; }
   .hero__title, .hero__tagline, .hero__desc { color: #000 !important; }
   .hero__title em { -webkit-text-fill-color: #000 !important; color: #000 !important; }

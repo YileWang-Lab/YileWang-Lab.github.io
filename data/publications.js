@@ -2,73 +2,165 @@
  *  论文列表 / Publication list
  * ----------------------------------------------------------------------------
  *  ⚠️ 这是全站唯一需要经常编辑的文件。
- *     加一篇论文 = 复制下面任意一条 {...} 粘贴到数组里，改字段即可。
+ *     加一篇论文 = 复制任意一条 {...} 粘贴到数组里，改字段即可。
  *
  *  字段说明 / Field reference
  *  ---------------------------------------------------------------------------
  *  titleEn    英文标题（必填）
  *  titleZh    中文标题（可留空 ""，留空时中文界面显示英文标题）
- *  authors    作者数组。想加粗本组成员，在名字两边写 **星号**
- *             例：["**Yile Wang**", "San Zhang", "Si Li"]
- *  venue      期刊/会议全称
- *  venueShort 简称，显示成小标签（可留空）
+ *  authors    作者数组。本组成员用 **星号** 加粗，例如 "**Yile Wang**"
+ *  venue      期刊/会议全称（含卷期页码）
+ *  venueShort 简称，显示成蓝色小标签（可留空）
  *  year       年份，数字，不要加引号
+ *  date       精确日期 "YYYY-MM-DD"，用于同年内排序（可省略）
  *  type       "journal" 期刊 | "conference" 会议 | "working" 工作论文 | "book" 专著章节
  *  status     "accepted" 已录用 | "published" 已发表 | "forthcoming" 即将刊出 | "working" 工作论文
- *  links      链接对象，没有的键直接删掉或留空字符串
- *             doi / pdf / code / arxiv / ssrn / slides
- *  tags       关键词数组，会显示成灰色小标签（可留空 []）
- *  featured   true 会置顶并加金色边框（用于最想突出的成果，可省略）
- *  noteEn/noteZh  备注，例如 "Best Paper Award"（可省略）
+ *  links      链接对象：doi / article / pdf / code / arxiv / ssrn / slides，没有的就删掉
+ *  tags       关键词数组，显示成灰色小标签（可留空 []）
+ *  banner     卡片顶部的横幅图路径（可省略）
+ *  certificate 录用证明图片路径，点击后灯箱放大（可省略）
+ *  featured   true 会置顶并加金色边框（可省略）
+ *  noteEn/noteZh  备注，例如 "通讯作者"（可省略）
+ *
+ *  通讯作者标记 †  已并入 authors 文案，例如 "**Yile Wang**†"
  * ==========================================================================*/
 
 window.PUBLICATIONS = [
 
-  /* ==========================================================================
-   *  ⬇️ 下面是示例条目 —— 等你把真实论文清单发来后我替换掉。
-   *     目前 url / 数字都不代表真实成果，先用来验证排版效果。
-   * ========================================================================*/
+  /* ======================= 2026 ======================= */
 
   {
-    titleEn: "Sample entry — replace with a real accepted paper",
-    titleZh: "示例条目 —— 请替换为真实已录用论文",
-    authors: ["**Yile Wang**", "Co-author A", "Co-author B"],
-    venue: "Journal name goes here",
-    venueShort: "",
+    titleEn: "Analysis of Influencing Factors and Prediction of Provincial Energy Poverty in China Based on Explainable Deep Learning",
+    titleZh: "基于可解释深度学习的中国省级能源贫困影响因素分析与预测",
+    authors: ["Zihao Fan", "Pengying Fan", "**Yile Wang**†"],
+    venue: "Systems, Vol. 14, Issue 3, Article 319",
+    venueShort: "Systems",
     year: 2026,
+    date: "2026-03-17",
     type: "journal",
-    status: "accepted",
-    links: { doi: "", pdf: "", code: "" },
-    tags: ["示例", "Sample"],
-    featured: true,
-    noteEn: "Demonstrates a featured (highlighted) entry.",
-    noteZh: "演示「重点突出」条目的样式。"
+    status: "published",
+    links: {
+      doi: "https://doi.org/10.3390/systems14030319",
+      article: "https://www.mdpi.com/2079-8954/14/3/319"
+    },
+    tags: ["能源贫困", "可解释深度学习", "能源与环境"],
+    banner: "assets/banners/systems-319.jpg",
+    certificate: "assets/certificates/systems-319.jpg",
+    noteEn: "MDPI · Open Access",
+    noteZh: "MDPI 开放获取"
   },
 
   {
-    titleEn: "Sample entry — a conference paper",
-    titleZh: "示例条目 —— 会议论文",
-    authors: ["Co-author A", "**Yile Wang**"],
-    venue: "Proceedings of the Example Conference",
-    venueShort: "EXAMPLE 2025",
+    titleEn: "Mapping the Coupling Coordination Between China's Digital Economy and Carbon Emissions: Spatiotemporal Patterns and Spatial Markov Transitions",
+    titleZh: "中国数字经济与碳排放耦合协调格局刻画：时空特征与空间马尔可夫转移",
+    authors: ["Chen Gao", "Chujia Zhang", "Zhenlin Chen", "**Yile Wang**†"],
+    venue: "Sustainability, Vol. 18, Issue 3, Article 1283",
+    venueShort: "Sustainability",
+    year: 2026,
+    date: "2026-01-27",
+    type: "journal",
+    status: "published",
+    links: {
+      doi: "https://doi.org/10.3390/su18031283",
+      article: "https://www.mdpi.com/2071-1050/18/3/1283"
+    },
+    tags: ["数字经济", "碳排放", "空间马尔可夫", "能源与环境"],
+    banner: "assets/banners/sustainability-1283.jpg",
+    certificate: "assets/certificates/sustainability-1283.jpg",
+    noteEn: "Gao, Zhang and Chen contributed equally · MDPI Open Access",
+    noteZh: "高、张、陈三位作者贡献相同 · MDPI 开放获取"
+  },
+
+  {
+    titleEn: "Calibrating Generative AI Use for Sustainable Higher Education: Cross-Sectional Evidence on Perceived Capability and Dependence",
+    titleZh: "可持续高等教育中生成式人工智能使用的校准：感知能力与依赖性的横截面证据",
+    authors: ["Xinchen Zhang", "**Yile Wang**", "Chunbing Li"],
+    venue: "Sustainability, Vol. 18, Issue 19, Article 9871",
+    venueShort: "Sustainability",
+    year: 2026,
+    date: "2026-09-01",
+    type: "journal",
+    status: "published",
+    links: {
+      article: "https://www.mdpi.com/2071-1050/18/19/9871"
+    },
+    tags: ["生成式人工智能", "高等教育", "可持续发展"],
+    banner: "assets/banners/sustainability-9871.jpg",
+    certificate: "assets/certificates/sustainability-9871.jpg",
+    noteEn: "MDPI · Open Access。DOI 10.3390/su18199871 尚未在 Crossref 注册，暂以 MDPI 页面为准。",
+    noteZh: "MDPI 开放获取。DOI 10.3390/su18199871 尚未在 Crossref 注册，暂以 MDPI 页面为准。"
+  },
+
+  /* ======================= 2025 ======================= */
+
+  {
+    titleEn: "Research on the Impact of Investor Sentiment on IPO Pricing Efficiency Based on Double Machine Learning",
+    titleZh: "基于双重机器学习的投资者情绪对 IPO 定价效率影响研究",
+    authors: ["Jintai Ye", "Yunshi Chen", "**Yile Wang**†"],
+    venue: "2025 International Conference on Information Technology, Communication Ecosystem and Management (ITCEM), pp. 230–236",
+    venueShort: "ITCEM 2025",
     year: 2025,
+    date: "2025-12-05",
     type: "conference",
     status: "published",
-    links: { doi: "https://example.com", pdf: "" },
-    tags: ["机器学习"]
+    links: { doi: "https://doi.org/10.1109/itcem68692.2025.00050" },
+    tags: ["金融科技", "IPO 定价", "双重机器学习", "投资者情绪"]
   },
 
   {
-    titleEn: "Sample entry — a working paper",
-    titleZh: "示例条目 —— 工作论文",
-    authors: ["**Yile Wang**"],
-    venue: "Working paper",
-    venueShort: "",
+    titleEn: "A Deep Learning Framework Integrating Swin Transformer and U-Net for Ancient Character Segmentation and Recognition",
+    titleZh: "融合 Swin Transformer 与 U-Net 的古文字分割与识别深度学习框架",
+    authors: ["**Yile Wang**†", "Kexin Li", "Hao Du", "Yiwei Feng"],
+    venue: "2025 IEEE 7th International Conference on Civil Aviation Safety and Information Technology (ICCASIT), pp. 816–822",
+    venueShort: "ICCASIT 2025",
     year: 2025,
-    type: "working",
-    status: "working",
-    links: { ssrn: "" },
-    tags: []
+    date: "2025-10-22",
+    type: "conference",
+    status: "published",
+    links: { doi: "https://doi.org/10.1109/iccasit66611.2025.11348884" },
+    tags: ["计算机视觉", "Swin Transformer", "U-Net", "古文字识别"]
+  },
+
+  {
+    titleEn: "Research on Intelligent Prediction of Photovoltaic Power Generation by Integrating Prophet and Deep Spatiotemporal Modeling",
+    titleZh: "融合 Prophet 与深度时空建模的光伏发电智能预测研究",
+    authors: ["**Yile Wang**†", "You Wu", "Tanglong Lian"],
+    venue: "2025 IEEE 7th International Conference on Power, Intelligent Computing and Systems (ICPICS), pp. 45–51",
+    venueShort: "ICPICS 2025",
+    year: 2025,
+    date: "2025-08-29",
+    type: "conference",
+    status: "published",
+    links: { doi: "https://doi.org/10.1109/icpics66386.2025.11347268" },
+    tags: ["能源预测", "光伏发电", "Prophet", "时空建模"]
+  },
+
+  {
+    titleEn: "Research on the Employment Prosperity Index of New Economic Service Industries in China based on Big Data",
+    titleZh: "基于大数据的新经济服务业就业景气指数研究",
+    authors: ["**Yile Wang**†", "Yicong Liu", "Jinyi Lu"],
+    venue: "Frontiers in Economics and Management, Vol. 6, Issue 8",
+    venueShort: "Front. Econ. Manag.",
+    year: 2025,
+    date: "2025-08-01",
+    type: "journal",
+    status: "published",
+    links: { doi: "https://doi.org/10.6981/FEM.202508_6(8).0022" },
+    tags: ["宏观与发展", "就业景气指数", "大数据"]
+  },
+
+  {
+    titleEn: "A Hybrid PCA-Stacking Framework for Multidimensional Assessment of Development Trajectories: Evidence from China's Modernization Process",
+    titleZh: "面向发展轨迹多维评估的混合 PCA-Stacking 框架：来自中国现代化进程的证据",
+    authors: ["Hanrui Wang", "**Yile Wang**†"],
+    venue: "Frontiers in Economics and Management, Vol. 6, Issue 7",
+    venueShort: "Front. Econ. Manag.",
+    year: 2025,
+    date: "2025-07-01",
+    type: "journal",
+    status: "published",
+    links: { doi: "https://doi.org/10.6981/FEM.202507_6(7).0018" },
+    tags: ["宏观与发展", "PCA-Stacking", "现代化进程"]
   }
 
 ];
