@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1a33">
+
+<title>Yile Wang Lab · 官网</title>
+<meta name="description" content="Yile Wang 课题组官网：经济学、金融工程与机器学习方向的研究团队，展示已录用与已发表论文、研究数据与开源代码。">
+<meta name="author" content="Yile Wang Lab">
+
+<!-- Open Graph / 分享卡片 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Yile Wang Lab">
+<meta property="og:description" content="Economics, Financial Engineering & Machine Learning — accepted and published papers, open data and code.">
+<meta property="og:url" content="https://yilewang-lab.github.io/">
+<meta property="og:site_name" content="Yile Wang Lab">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="canonical" href="https://yilewang-lab.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b1a33'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Georgia,serif' font-weight='700' fill='%23ddbe5f' text-anchor='middle'%3EYW%3C/text%3E%3C/svg%3E">
+
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- 渐进增强开关：只有 JS 可用时才隐藏待入场元素，避免无 JS / 脚本报错时页面空白 -->
+<script>
+  document.documentElement.classList.add("js");
+  window.addEventListener("error", function () {
+    document.documentElement.classList.remove("js");
+  });
+</script>
+
+<!-- 结构化数据，帮助搜索引擎理解这是研究机构站点 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ResearchOrganization",
+  "name": "Yile Wang Lab",
+  "url": "https://yilewang-lab.github.io/",
+  "description": "Economics, financial engineering and machine learning research group.",
+  "sameAs": ["https://github.com/YileWang-Lab"]
+}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main" data-i18n="a11y.skip">跳到主要内容</a>
+
+<!-- ==================================================== header -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <span class="brand__mark" data-cfg="monogram" aria-hidden="true">YWL</span>
+      <span class="brand__text">
+        <span class="brand__name" data-cfg="labName">Yile Wang Lab</span>
+        <span class="brand__sub">Research Group</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="site-nav" aria-label="主导航" data-i18n-attr="aria-label:a11y.nav">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#about"    data-i18n="nav.about">关于</a></li>
+        <li><a class="nav__link" href="#research" data-i18n="nav.research">研究方向</a></li>
+        <li><a class="nav__link" href="#pubs"     data-i18n="nav.pubs">论文成果</a></li>
+        <li><a class="nav__link" href="#team"     data-i18n="nav.team">团队成员</a></li>
+        <li><a class="nav__link" href="#data"     data-i18n="nav.data">数据与代码</a></li>
+        <li><a class="nav__link" href="#contact"  data-i18n="nav.contact">联系我们</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-tools">
+      <div class="lang-switch" role="group" aria-label="切换语言" data-i18n-attr="aria-label:a11y.lang">
+        <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+
+      <button type="button" class="toggle" id="theme-toggle" aria-pressed="false"
+              title="切换深色 / 浅色主题" data-i18n-attr="title:a11y.theme;aria-label:a11y.theme">
+        <span class="toggle__icon" aria-hidden="true">🌙</span>
+      </button>
+
+      <button type="button" class="toggle nav-toggle" id="nav-toggle"
+              aria-expanded="false" aria-controls="site-nav"
+              data-i18n-attr="aria-label:a11y.menu">
+        <span class="toggle__icon" aria-hidden="true">☰</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================================================== hero -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <span class="hero__badge">
+        <span class="dot" aria-hidden="true"></span>
+        <span data-i18n="hero.badge">正在持续更新</span>
+      </span>
+
+      <h1 class="hero__title" data-cfg="labName">Yile Wang Lab</h1>
+      <p class="hero__tagline" data-cfg="tagline">经济学 · 金融工程 · 机器学习</p>
+      <p class="hero__desc" data-i18n="hero.desc">我们关注金融市场中的定价、风险与预测问题。</p>
+
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="#pubs">
+          <span aria-hidden="true">📚</span><span data-i18n="hero.cta_pubs">查看论文成果</span>
+        </a>
+        <a class="btn btn--ghost" href="#contact">
+          <span aria-hidden="true">✉️</span><span data-i18n="hero.cta_contact">联系我们</span>
+        </a>
+      </div>
+
+      <div class="hero__stats" id="hero-stats"></div>
+    </div>
+  </section>
+
+  <!-- ================================================== about -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div>
+          <div class="section-head reveal">
+            <p class="eyebrow" data-i18n="about.eyebrow">关于我们</p>
+            <h2 class="section-title" data-i18n="about.title">让金融研究可复现、可复用</h2>
+          </div>
+          <div class="prose reveal">
+            <p data-i18n-html data-i18n="about.p1">课题组围绕资产定价、金融风险与金融机器学习展开研究。</p>
+            <p data-i18n-html data-i18n="about.p2">因此除了论文，我们把清洗好的双语数据一并整理公开。</p>
+            <p data-i18n-html data-i18n="about.p3">目前课题组的研究覆盖期权定价与对冲等方向。</p>
+          </div>
+        </div>
+
+        <aside class="fact-card reveal">
+          <h3 data-i18n="about.facts">基本信息</h3>
+          <ul class="fact-list" id="fact-list"></ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================== research -->
+  <section class="section section--alt" id="research">
+    <div class="wrap">
+      <div class="section-head section-head--center reveal">
+        <p class="eyebrow" data-i18n="research.eyebrow">研究方向</p>
+        <h2 class="section-title" data-i18n="research.title">我们关心的问题</h2>
+        <p class="section-lead" data-i18n="research.lead">从衍生品定价到系统性风险。</p>
+      </div>
+      <div class="research-grid" id="research-grid"></div>
+    </div>
+  </section>
+
+  <!-- ================================================== publications -->
+  <section class="section" id="pubs">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="pubs.eyebrow">论文成果</p>
+        <h2 class="section-title" data-i18n="pubs.title">已录用与已发表论文</h2>
+        <p class="section-lead" data-i18n="pubs.lead">按年份倒序排列，支持搜索与筛选。</p>
+      </div>
+
+      <div class="pub-toolbar reveal" id="pub-toolbar">
+        <div class="pub-search">
+          <span class="pub-search__icon" aria-hidden="true">🔍</span>
+          <label class="sr-only" for="pub-search" data-i18n="pubs.search">搜索论文</label>
+          <input type="search" id="pub-search" autocomplete="off"
+                 placeholder="搜索标题、作者、期刊或关键词…" data-i18n-attr="placeholder:pubs.search">
+        </div>
+        <div class="chips" id="filter-type" role="group" aria-label="类型" data-i18n-attr="aria-label:pubs.filter.type"></div>
+        <div class="chips" id="filter-year" role="group" aria-label="年份" data-i18n-attr="aria-label:pubs.filter.year"></div>
+      </div>
+
+      <p class="pub-count" id="pub-count" aria-live="polite"></p>
+      <div id="pub-list"></div>
+    </div>
+  </section>
+
+  <!-- ================================================== team -->
+  <section class="section section--alt" id="team">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="team.eyebrow">团队成员</p>
+        <h2 class="section-title" data-i18n="team.title">课题组</h2>
+        <p class="section-lead" data-i18n="team.lead">欢迎对金融工程与实证研究感兴趣的同学联系交流。</p>
+      </div>
+      <div class="team-grid" id="team-grid"></div>
+    </div>
+  </section>
+
+  <!-- ================================================== data & code -->
+  <section class="section" id="data">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow" data-i18n="data.eyebrow">数据与代码</p>
+        <h2 class="section-title" data-i18n="data.title">开放的研究材料</h2>
+        <p class="section-lead" data-i18n="data.lead">我们把整理好的数据、字段字典与处理脚本放在公开仓库里。</p>
+      </div>
+      <div class="repo-grid" id="repo-grid"></div>
+    </div>
+  </section>
+
+  <!-- ================================================== contact -->
+  <section class="section section--alt" id="contact">
+    <div class="wrap">
+      <div class="contact-box reveal">
+        <div class="section-head" style="margin-bottom:0">
+          <p class="eyebrow" data-i18n="contact.eyebrow">联系我们</p>
+          <h2 class="section-title" data-i18n="contact.title">欢迎交流与合作</h2>
+          <p class="section-lead" data-i18n="contact.lead">无论是学术合作、数据问题还是加入课题组的意向，都欢迎联系我们。</p>
+        </div>
+        <div class="contact-lines" id="contact-lines"></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ==================================================== footer -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="brand__mark" data-cfg="monogram" aria-hidden="true">YWL</span>
+        <span data-cfg="labName">Yile Wang Lab</span>
+      </div>
+      <nav aria-label="页脚导航" data-i18n-attr="aria-label:footer.nav">
+        <ul class="footer-nav">
+          <li><a href="#about"    data-i18n="nav.about">关于</a></li>
+          <li><a href="#research" data-i18n="nav.research">研究方向</a></li>
+          <li><a href="#pubs"     data-i18n="nav.pubs">论文成果</a></li>
+          <li><a href="#team"     data-i18n="nav.team">团队成员</a></li>
+          <li><a href="#data"     data-i18n="nav.data">数据与代码</a></li>
+          <li><a href="#contact"  data-i18n="nav.contact">联系我们</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p>© <span id="year">2026</span> <span data-cfg="affiliation">Yile Wang Lab</span>. <span data-i18n="footer.rights">版权所有。</span></p>
+      <p data-cfg="footerNote" data-i18n="footer.built">由纯 HTML / CSS / JavaScript 构建。</p>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- 数据文件（要改内容，改这两个即可） -->
+<script src="data/site-config.js"></script>
+<script src="data/publications.js"></script>
+<!-- 界面文案与逻辑 -->
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
