@@ -103,17 +103,26 @@ window.SITE_CONFIG = {
     }
   ],
 
-  /* ---- 团队 / Team ------------------------------------------------------ */
-  // TODO: 按需增补成员；url 留空则不显示主页链接
-  team: [
-    {
-      nameEn: "Yile Wang",
-      nameZh: "王毅乐",
-      roleEn: "Principal Investigator",
-      roleZh: "课题组负责人",
-      url: ""
+  /* ---- 团队负责人 / Principal investigator ------------------------------ */
+  // 照片：把图片放进 assets/ 后填相对路径；留空则显示姓氏首字的圆形头像
+  pi: {
+    nameEn: "Yile Wang",
+    nameZh: "王毅乐",
+    roleEn: "Principal Investigator",
+    roleZh: "课题组负责人",
+    photo: "",
+    // 简介正文在 assets/js/i18n.js 的 pi.bio1 ~ pi.bio4 里
+    links: {
+      email: "wyl13393401611@126.com",
+      github: "https://github.com/KarlHeinrich-jpg"
     }
-  ],
+  },
+
+  /* ---- 其他成员 / Other members ---------------------------------------- */
+  // 目前只有负责人本人，所以留空（留空时"其他成员"整块不显示）。
+  // 要加成员就取消注释、按格式填写：
+  // { nameEn: "San Zhang", nameZh: "张三", roleEn: "PhD Student", roleZh: "博士研究生", url: "" }
+  team: [],
 
   /* ---- 页脚 ------------------------------------------------------------- */
   footerNoteEn: "Built with plain HTML, CSS and JavaScript — no external dependencies, no trackers.",

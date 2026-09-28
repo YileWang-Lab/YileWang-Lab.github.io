@@ -45,8 +45,9 @@
     pdf:     "", code: "", arxiv: "", ssrn: "", slides: ""   // 没有的键删掉或留空
   },
   tags: ["期权", "深度学习"],                             // 关键词（可为 []）
-  banner:      "assets/banners/xxx.jpg",                 // 卡片顶部横幅（可省略）
-  certificate: "assets/certificates/xxx.jpg",            // 录用证明，点击灯箱放大（可省略）
+  figure:      "assets/figures/xxx.jpg",                 // 论文配图，卡片顶部缩略图（可省略）
+  banner:      "assets/banners/xxx.jpg",                 // 期刊横幅，灯箱查看（可省略）
+  certificate: "assets/certificates/xxx.jpg",            // 录用证明，灯箱查看（可省略）
   featured: true,                                        // true = 置顶并加金色边框（可省略）
   noteEn: "MDPI · Open Access",                          // 备注（可省略）
   noteZh: "MDPI 开放获取"
@@ -56,13 +57,20 @@
 > **注意**：中文文案里如果要用引号，请用中文引号「」或 “ ”，
 > 不要用英文双引号 `"`，否则会破坏 JavaScript 语法。
 
-### 图片（横幅 / 录用证明）
+### 图片（论文配图 / 期刊横幅 / 录用证明）
 
-把图片放进 `assets/banners/` 或 `assets/certificates/`，然后在条目里写相对路径即可。
-两者都会在点击后打开灯箱放大查看。
+把图片放进 `assets/figures/`、`assets/banners/` 或 `assets/certificates/`，然后在条目里写相对路径。
 
-建议尺寸：横幅 1200px 宽（约 2:1），证书 1700px 宽。命名用 `期刊-卷期页.jpg`
+- **`figure`** 显示为卡片顶部的缩略图。**没有配图的论文不用管**，会自动用「期刊名 + 年份」的
+  渐变占位块代替，网格高度依然整齐。
+- `banner` 和 `certificate` 不占卡片版面，只在链接区提供一个按钮，点击后灯箱放大。
+
+建议尺寸：配图最长边 1400px、横幅 1200px、证书 1700px。命名用 `期刊-卷期页.jpg`
 （例如 `systems-319.jpg`），方便和条目对应。
+
+> MDPI 这类开放获取期刊的论文配图可以直接从其官网下载：
+> `https://www.mdpi.com/<期刊>/<期刊-卷-文章号>/article_deploy/html/images/<期刊-卷-文章号>-g001.png`
+> 例如 `https://www.mdpi.com/systems/systems-14-00319/article_deploy/html/images/systems-14-00319-g001.png`
 
 ### 状态与类型的显示文字
 
@@ -87,9 +95,29 @@
 - `labMonogram` —— 页头左上角的缩写（1–3 个字符最好看）
 - `contact.email` / `contact.github` / `contact.githubPersonal` / `contact.scholar` / `contact.orcid`
 - `stats` —— **首屏那排数字**
+- `pi` —— **团队负责人**：姓名、职务、照片、联系方式
 - `research` —— 研究方向卡片
-- `team` —— 团队成员
+- `team` —— 其他成员（留空 `[]` 则"其他成员"整块不显示）
 - `repos` —— "数据与代码"板块里展示的仓库
+
+### 团队负责人（pi）
+
+```js
+pi: {
+  nameEn: "Yile Wang",
+  nameZh: "王毅乐",
+  roleEn: "Principal Investigator",
+  roleZh: "课题组负责人",
+  photo: "",                    // 填 assets/xxx.jpg 显示照片；留空则显示姓氏首字头像
+  links: {
+    email: "wyl13393401611@126.com",
+    github: "https://github.com/KarlHeinrich-jpg"
+  }
+}
+```
+
+**简介正文**不在这个文件里，在 `assets/js/i18n.js` 的 `pi.bio1` ~ `pi.bio4`
+（中英文各一份）。支持 `**加粗**` 标记。想加第五段就往那个数组里加 `pi.bio5`。
 
 ### 首屏数字（stats）
 

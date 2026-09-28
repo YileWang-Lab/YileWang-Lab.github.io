@@ -17,7 +17,8 @@
  *  status     "accepted" 已录用 | "published" 已发表 | "forthcoming" 即将刊出 | "working" 工作论文
  *  links      链接对象：doi / article / pdf / code / arxiv / ssrn / slides，没有的就删掉
  *  tags       关键词数组，显示成灰色小标签（可留空 []）
- *  banner     卡片顶部的横幅图路径（可省略）
+ *  banner     卡片横幅图路径（可省略）
+ *  figure     论文配图路径，显示为卡片顶部缩略图（可省略；没有则用期刊名占位块）
  *  certificate 录用证明图片路径，点击后灯箱放大（可省略）
  *  featured   true 会置顶并加金色边框（可省略）
  *  noteEn/noteZh  备注，例如 "通讯作者"（可省略）
@@ -44,6 +45,7 @@ window.PUBLICATIONS = [
       article: "https://www.mdpi.com/2079-8954/14/3/319"
     },
     tags: ["能源贫困", "可解释深度学习", "能源与环境"],
+    figure: "assets/figures/systems-319.jpg",
     banner: "assets/banners/systems-319.jpg",
     certificate: "assets/certificates/systems-319.jpg",
     noteEn: "MDPI · Open Access",
@@ -65,6 +67,7 @@ window.PUBLICATIONS = [
       article: "https://www.mdpi.com/2071-1050/18/3/1283"
     },
     tags: ["数字经济", "碳排放", "空间马尔可夫", "能源与环境"],
+    figure: "assets/figures/sustainability-1283.jpg",
     banner: "assets/banners/sustainability-1283.jpg",
     certificate: "assets/certificates/sustainability-1283.jpg",
     noteEn: "Gao, Zhang and Chen contributed equally · MDPI Open Access",
@@ -85,6 +88,7 @@ window.PUBLICATIONS = [
       article: "https://www.mdpi.com/2071-1050/18/19/9871"
     },
     tags: ["生成式人工智能", "高等教育", "可持续发展"],
+    figure: "assets/figures/sustainability-9871.jpg",
     banner: "assets/banners/sustainability-9871.jpg",
     certificate: "assets/certificates/sustainability-9871.jpg",
     noteEn: "MDPI · Open Access。DOI 10.3390/su18199871 尚未在 Crossref 注册，暂以 MDPI 页面为准。",

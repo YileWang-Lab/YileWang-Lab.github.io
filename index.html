@@ -190,20 +190,29 @@
         <div class="chips" id="filter-year" role="group" aria-label="年份" data-i18n-attr="aria-label:pubs.filter.year"></div>
       </div>
 
-      <p class="pub-count" id="pub-count" aria-live="polite"></p>
+      <p class="pub-count" id="pub-count" aria-live="polite" hidden></p>
       <div id="pub-list"></div>
     </div>
   </section>
 
-  <!-- ================================================== team -->
+  <!-- ================================================== 团队负责人 -->
   <section class="section section--alt" id="team">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow" data-i18n="team.eyebrow">团队成员</p>
-        <h2 class="section-title" data-i18n="team.title">课题组</h2>
-        <p class="section-lead" data-i18n="team.lead">欢迎对金融工程与实证研究感兴趣的同学联系交流。</p>
+        <p class="eyebrow" data-i18n="pi.eyebrow">团队负责人</p>
+        <h2 class="section-title" id="pi-name">王毅乐</h2>
+        <p class="section-lead" id="pi-lead" data-i18n="pi.lead">从本科阶段开始独立做研究。</p>
       </div>
-      <div class="team-grid" id="team-grid"></div>
+
+      <div class="pi-grid">
+        <aside class="pi-card reveal" id="pi-card"></aside>
+        <div class="pi-bio reveal" id="pi-bio"></div>
+      </div>
+
+      <div id="team-members" hidden>
+        <h3 class="team-sub" data-i18n="pi.members">其他成员</h3>
+        <div class="team-grid" id="team-grid"></div>
+      </div>
     </div>
   </section>
 

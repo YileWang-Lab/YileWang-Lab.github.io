@@ -144,7 +144,8 @@
 
     renderFacts();
     renderResearch();
-    renderTeam();
+    renderPI();
+    renderMembers();
     renderRepos();
     renderContact();
     renderHeroStats();
@@ -182,15 +183,62 @@
     }).join("");
   }
 
-  function renderTeam() {
+  function renderPI() {
+    var pi = CFG.pi || {};
+    var name = state.lang === "zh" ? (pi.nameZh || pi.nameEn) : (pi.nameEn || pi.nameZh);
+    var role = state.lang === "zh" ? (pi.roleZh || pi.roleEn) : (pi.roleEn || pi.roleZh);
+
+    var titleEl = $("#pi-name");
+    if (titleEl) titleEl.textContent = name || "";
+    var leadEl = $("#pi-lead");
+    if (leadEl) leadEl.textContent = t("pi.lead");
+
+    var card = $("#pi-card");
+    if (card) {
+      var avatar = pi.photo
+        ? '<img class="pi-card__photo" src="' + esc(pi.photo) + '" alt="' + esc(name) + '" loading="lazy" decoding="async">'
+        : '<div class="pi-card__avatar" aria-hidden="true">' + esc(initials(name)) + "</div>";
+
+      var links = [];
+      var L = pi.links || {};
+      if (L.email) {
+        links.push('<a class="pi-card__link" href="mailto:' + esc(L.email) + '">✉️ <span>' + esc(L.email) + "</span></a>");
+      }
+      if (L.github) {
+        links.push('<a class="pi-card__link" href="' + esc(L.github) + '" target="_blank" rel="noopener">👤 <span>' + esc(t("pi.github")) + "</span></a>");
+      }
+      if (CFG.contact && CFG.contact.github) {
+        links.push('<a class="pi-card__link" href="' + esc(CFG.contact.github) + '" target="_blank" rel="noopener">🏛️ <span>' + esc(t("contact.github")) + "</span></a>");
+      }
+
+      card.innerHTML = avatar +
+        '<h3 class="pi-card__name">' + esc(name) + "</h3>" +
+        '<p class="pi-card__role">' + esc(role || "") + "</p>" +
+        (links.length ? '<div class="pi-card__links">' + links.join("") + "</div>" : "");
+    }
+
+    var bio = $("#pi-bio");
+    if (bio) {
+      bio.innerHTML = ["pi.bio1", "pi.bio2", "pi.bio3", "pi.bio4"].map(function (k, i) {
+        var v = t(k);
+        if (!v || v === k) return "";
+        return "<p" + (i === 0 ? ' class="pi-bio__lead"' : "") + ">" + rich(v) + "</p>";
+      }).join("");
+    }
+  }
+
+  function renderMembers() {
     var box = $("#team-grid");
+    var wrap = $("#team-members");
     if (!box) return;
+
     var items = Array.isArray(CFG.team) ? CFG.team : [];
     if (!items.length) {
-      var sec = $("#team");
-      if (sec) sec.hidden = true;
+      if (wrap) wrap.hidden = true;
       return;
     }
+    if (wrap) wrap.hidden = false;
+
     box.innerHTML = items.map(function (p) {
       var name = state.lang === "zh" ? (p.nameZh || p.nameEn) : (p.nameEn || p.nameZh);
       var role = state.lang === "zh" ? (p.roleZh || p.roleEn) : (p.roleEn || p.roleZh);
@@ -333,16 +381,28 @@
         ' data-caption="' + esc(ti.main) + '">' +
         '<span aria-hidden="true">🎓</span>' + esc(t("link.certificate")) + "</button>";
     }
-
-    // 期刊提供的 article banner，放在卡片顶部
-    var banner = p.banner
-      ? '<button type="button" class="pub__banner"' +
+    if (p.banner) {
+      links += '<button type="button" class="pub__link"' +
         ' data-lightbox="' + esc(p.banner) + '"' +
-        ' data-caption="' + esc(ti.main) + '"' +
-        ' aria-label="' + esc(t("a11y.zoom")) + '">' +
-        '<img src="' + esc(p.banner) + '" alt="" loading="lazy" decoding="async" width="1200" height="607">' +
-        "</button>"
-      : "";
+        ' data-caption="' + esc(ti.main) + '">' +
+        '<span aria-hidden="true">🖼️</span>' + esc(t("link.banner")) + "</button>";
+    }
+
+    // 缩略图：有论文配图就用配图，没有就用「期刊名 + 年份」的占位块，
+    // 这样网格排下来高度一致，不会有的卡片秃一块。
+    var thumb;
+    if (p.figure) {
+      thumb = '<button type="button" class="pub__thumb" data-lightbox="' + esc(p.figure) + '"' +
+        ' data-caption="' + esc(ti.main) + '" aria-label="' + esc(t("a11y.zoom")) + '">' +
+        '<img src="' + esc(p.figure) + '" alt="" loading="lazy" decoding="async">' +
+        "</button>";
+    } else {
+      var tileName = p.venueShort || String(p.venue || "").split(/[,(]/)[0].trim();
+      thumb = '<div class="pub__thumb pub__thumb--tile pub__thumb--' + esc(p.type || "other") + '">' +
+        '<span class="pub__thumb-name">' + esc(tileName) + "</span>" +
+        (p.year ? '<span class="pub__thumb-year">' + esc(p.year) + "</span>" : "") +
+        "</div>";
+    }
 
     var note = state.lang === "zh" ? (p.noteZh || p.noteEn) : (p.noteEn || p.noteZh);
     var tags = (p.tags || []).length
@@ -350,7 +410,8 @@
       : "";
 
     return '<article class="pub' + (p.featured ? " pub--featured" : "") + '">' +
-      banner +
+      thumb +
+      '<div class="pub__body">' +
       '<div class="pub__badges">' + badges.join("") + "</div>" +
       '<h3 class="pub__title">' + esc(ti.main) +
         (ti.alt ? '<span class="pub__title-zh">' + esc(ti.alt) + "</span>" : "") +
@@ -360,21 +421,14 @@
       (note ? '<p class="pub__note">ℹ️ ' + esc(note) + "</p>" : "") +
       (links ? '<div class="pub__links">' + links + "</div>" : "") +
       tags +
-      "</article>";
+      "</div></article>";
   }
 
   function renderPubs() {
     var box = $("#pub-list");
-    var countEl = $("#pub-count");
     if (!box) return;
 
     var list = visiblePubs();
-
-    if (countEl) {
-      countEl.innerHTML = (list.length === PUBS.length)
-        ? t("pubs.count", { n: list.length })
-        : t("pubs.count.filtered", { n: list.length, total: PUBS.length });
-    }
 
     if (!list.length) {
       box.innerHTML = '<div class="pub-empty"><div class="pub-empty__icon" aria-hidden="true">🔍</div><p>' + esc(t("pubs.empty")) + "</p></div>";
@@ -394,7 +448,7 @@
     box.innerHTML = groups.map(function (y) {
       return '<div class="pub-year-group">' +
         '<h3 class="pub-year">' + esc(y) + "</h3>" +
-        '<div class="pub-list">' + byYear[y].map(renderPub).join("") + "</div>" +
+        '<div class="pub-grid">' + byYear[y].map(renderPub).join("") + "</div>" +
         "</div>";
     }).join("");
   }

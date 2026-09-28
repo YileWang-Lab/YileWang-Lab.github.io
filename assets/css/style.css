@@ -528,44 +528,66 @@ button { font: inherit; color: inherit; cursor: pointer; }
   content: ""; flex: 1; height: 1px; background: var(--border);
 }
 
-.pub-list { display: grid; gap: 15px; }
+/* 卡片网格：参考课题组网站的论文展示方式，图文并排 */
+.pub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 22px;
+}
 
 .pub {
   position: relative;
+  display: flex; flex-direction: column;
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius); padding: 22px 24px;
+  border-radius: var(--radius); overflow: hidden;
   box-shadow: var(--shadow-xs);
   transition: box-shadow .18s, border-color .18s, transform .18s;
 }
 .pub:hover {
   box-shadow: var(--shadow-md); border-color: var(--border-strong);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
 .pub--featured {
   border-color: color-mix(in srgb, var(--gold-500) 55%, var(--border));
   box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold-500) 22%, transparent), var(--shadow-sm);
 }
-.pub--featured::after {
-  content: "★"; position: absolute; top: 16px; right: 18px;
-  color: var(--gold-500); font-size: .95rem;
-}
 
-/* 期刊提供的 article banner：卡片顶部通栏 */
-.pub__banner {
-  display: block;
-  width: calc(100% + 48px);
-  margin: -22px -24px 20px;
-  padding: 0; border: 0; background: var(--surface-2);
-  border-radius: 13px 13px 0 0;
+/* 缩略图：有论文配图就用配图，没有就用「期刊名 + 年份」占位块，
+   两者高度一致，网格不会参差不齐 */
+.pub__thumb {
+  display: block; width: 100%; padding: 0; border: 0;
+  aspect-ratio: 3 / 2;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--border);
   overflow: hidden; cursor: zoom-in;
-  aspect-ratio: 1200 / 607;
 }
-.pub__banner img {
+.pub__thumb img {
   width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform .35s ease;
+  transition: transform .4s ease;
 }
-.pub__banner:hover img { transform: scale(1.02); }
-.pub__banner:focus-visible { outline: 3px solid var(--gold-500); outline-offset: -3px; }
+.pub:hover .pub__thumb img { transform: scale(1.04); }
+.pub__thumb:focus-visible { outline: 3px solid var(--gold-500); outline-offset: -3px; }
+
+.pub__thumb--tile {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 7px; cursor: default; text-align: center;
+  background: linear-gradient(150deg, var(--navy-600) 0%, var(--navy-900) 100%);
+  color: var(--gold-400);
+}
+.pub__thumb--conference { background: linear-gradient(150deg, #1d4a53 0%, #0b1e24 100%); color: #8fd8d0; }
+.pub__thumb--working    { background: linear-gradient(150deg, #4a4258 0%, #1b1822 100%); color: #cdbdf0; }
+.pub__thumb-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.5vw, 1.22rem);
+  font-weight: 700; line-height: 1.3;
+  padding: 0 20px; max-width: 100%;
+}
+.pub__thumb-year { font-size: .78rem; font-weight: 600; letter-spacing: .14em; opacity: .72; }
+
+.pub__body {
+  padding: 20px 22px 22px;
+  display: flex; flex-direction: column; flex: 1;
+}
 
 .pub__badges { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 12px; }
 
@@ -640,6 +662,74 @@ button.pub__link { font-family: inherit; cursor: zoom-in; }
   border-radius: var(--radius); color: var(--text-muted);
 }
 .pub-empty__icon { font-size: 2rem; margin-bottom: 12px; opacity: .55; }
+
+/* ---------------------------------------------------------------- 团队负责人 */
+.pi-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 46px;
+  align-items: start;
+}
+
+.pi-card {
+  position: sticky; top: calc(var(--header-h) + 24px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 30px 26px 26px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+.pi-card__photo {
+  width: 132px; height: 132px; border-radius: 50%;
+  object-fit: cover; margin: 0 auto 18px;
+  box-shadow: var(--shadow-md);
+}
+.pi-card__avatar {
+  width: 132px; height: 132px; margin: 0 auto 18px;
+  border-radius: 50%; display: grid; place-items: center;
+  background: linear-gradient(145deg, var(--navy-700), var(--navy-900));
+  color: var(--gold-400);
+  font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700;
+  box-shadow: var(--shadow-md);
+}
+.pi-card__name {
+  margin: 0 0 6px; font-size: 1.22rem; font-weight: 700;
+  letter-spacing: -.01em; color: var(--text);
+}
+.pi-card__role { margin: 0 0 20px; font-size: .88rem; color: var(--text-muted); font-weight: 500; }
+.pi-card__links {
+  display: grid; gap: 8px;
+  padding-top: 18px; border-top: 1px solid var(--border);
+}
+.pi-card__link {
+  display: flex; align-items: center; gap: 9px;
+  padding: 9px 12px; border-radius: 9px;
+  border: 1px solid var(--border); background: var(--bg);
+  font-size: .84rem; font-weight: 600; color: var(--text-soft);
+  text-decoration: none; text-align: left; word-break: break-all;
+  transition: background .15s, color .15s, border-color .15s;
+}
+.pi-card__link:hover {
+  background: var(--navy-700); color: #fff;
+  border-color: var(--navy-700); text-decoration: none;
+}
+
+.pi-bio p { margin: 0 0 18px; font-size: 1.02rem; line-height: 1.95; color: var(--text-soft); }
+.pi-bio p:last-child { margin-bottom: 0; }
+.pi-bio .pi-bio__lead { font-size: 1.13rem; color: var(--text); }
+.pi-bio strong { color: var(--text); font-weight: 700; }
+
+.team-sub {
+  margin: 56px 0 22px;
+  font-size: .78rem; font-weight: 700;
+  letter-spacing: .13em; text-transform: uppercase; color: var(--gold-600);
+}
+
+@media (max-width: 880px) {
+  .pi-grid { grid-template-columns: 1fr; gap: 32px; }
+  .pi-card { position: static; max-width: 400px; margin-inline: auto; }
+}
 
 /* ---------------------------------------------------------------- team */
 .team-grid {
@@ -826,8 +916,8 @@ button.pub__link { font-family: inherit; cursor: zoom-in; }
 @media (max-width: 520px) {
   .brand__name { font-size: .88rem; max-width: 128px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .header-tools .toggle__label { display: none; }
-  .pub { padding: 18px 17px; }
-  .pub__banner { width: calc(100% + 34px); margin: -18px -17px 16px; border-radius: 11px 11px 0 0; }
+  .pub__body { padding: 17px 17px 19px; }
+  .pub-grid { grid-template-columns: 1fr; }
   .pub-toolbar { padding: 12px; }
   .fact-list li { flex-direction: column; gap: 3px; }
   .fact-list .k { width: auto; }
