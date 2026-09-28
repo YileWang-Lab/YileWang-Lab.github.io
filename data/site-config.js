@@ -4,7 +4,7 @@
  *  这里集中放"会变动但不属于论文"的信息。改完存盘、提交、推送即可生效。
  *  All site-wide settings live here. Edit, save, commit, push.
  *
- *  ⚠️ 需要你确认的地方用 TODO 标出来了。
+ *  注意：需要你确认的地方用 TODO 标出来了。
  * ==========================================================================*/
 
 window.SITE_CONFIG = {
@@ -40,7 +40,7 @@ window.SITE_CONFIG = {
 
   /* ---- 首屏数字 / Hero stats ------------------------------------------- */
   // 想加/减一项就增删数组元素；不需要就把整个数组改成 []
-  // ⚠️ 个人仓库数是写死的（站点不请求任何外部接口，国内访问才稳定）。
+  // 注意：个人仓库数是写死的（站点不请求任何外部接口，国内访问才稳定）。
   //    想更新可以跑 `node tools/refresh-repo-count.js`，或手动改下面的 value。
   stats: [
     { value: 23, labelEn: "Personal repositories", labelZh: "个人开源仓库" },
@@ -71,31 +71,32 @@ window.SITE_CONFIG = {
   ],
 
   /* ---- 研究方向 / Research areas --------------------------------------- */
-  // 按课题组已发表论文的实际方向归纳，icon 用 emoji（零依赖、不会加载失败）
+  // 按课题组已发表论文的实际方向归纳。
+  // icon 用图标名（不是 emoji）：trending / leaf / cpu / chart / book / globe / code
   research: [
     {
-      icon: "📈",
+      icon: "trending",
       titleEn: "FinTech & Market Microstructure",
       titleZh: "金融科技与市场微观结构",
       descEn: "IPO pricing efficiency, investor sentiment and machine-learning identification strategies for financial markets.",
       descZh: "IPO 定价效率、投资者情绪，以及面向金融市场的机器学习因果识别方法。"
     },
     {
-      icon: "🌱",
+      icon: "leaf",
       titleEn: "Energy & Environmental Economics",
       titleZh: "能源与环境经济学",
       descEn: "Energy poverty measurement, carbon-emission accounting, and the coupling coordination between the digital economy and sustainability.",
       descZh: "能源贫困测度、碳排放核算，以及数字经济与可持续发展的耦合协调关系。"
     },
     {
-      icon: "🤖",
+      icon: "cpu",
       titleEn: "Machine Learning & Intelligent Forecasting",
       titleZh: "机器学习与智能预测",
       descEn: "Explainable deep learning, spatiotemporal modelling and hybrid forecasting frameworks, plus vision models for document intelligence.",
       descZh: "可解释深度学习、时空建模与混合预测框架，以及面向文档智能的视觉模型。"
     },
     {
-      icon: "📊",
+      icon: "chart",
       titleEn: "Macro & Development Assessment",
       titleZh: "宏观与发展评估",
       descEn: "Multidimensional indices for employment, modernization and regional development, built on big-data and dimension-reduction methods.",

@@ -69,14 +69,54 @@
     toast._t = setTimeout(function () { el.classList.remove("is-visible"); }, 2200);
   }
 
+  /* ------------------------------------------------------------ icons */
+  /* 内联 SVG，代替 emoji：不依赖任何图标字体、各平台渲染一致、颜色跟随文字。
+     路径手写，统一 24x24 视野、线条风格。 */
+  var ICON = {
+    trending: '<path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/>',
+    leaf: '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10Z"/><path d="M2 21c0-3 1.9-5.4 5.1-6C9.5 14.5 12 13 13 12"/>',
+    cpu: '<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v2M15 2v2M9 20v2M15 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/>',
+    chart: '<path d="M12 20V10M18 20V4M6 20v-4"/>',
+    book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/>',
+    mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2.6 6.5 9.4 6.4 9.4-6.4"/>',
+    moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/>',
+    menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
+    close: '<path d="M18 6 6 18M6 6l12 12"/>',
+    link: '<path d="M10.6 13.4a4.2 4.2 0 0 0 6.3.5l2.1-2.1a4.2 4.2 0 0 0-5.9-5.9l-1.2 1.2"/><path d="M13.4 10.6a4.2 4.2 0 0 0-6.3-.5l-2.1 2.1a4.2 4.2 0 0 0 5.9 5.9l1.2-1.2"/>',
+    globe: '<circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5a15 15 0 0 1 3.8 9.5A15 15 0 0 1 12 21.5a15 15 0 0 1-3.8-9.5A15 15 0 0 1 12 2.5Z"/>',
+    doc: '<path d="M14 2.5H6.5a2 2 0 0 0-2 2v15a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V8Z"/><path d="M14 2.5V8h5.5"/>',
+    code: '<path d="m15.5 17.5 5.5-5.5-5.5-5.5"/><path d="m8.5 6.5-5.5 5.5 5.5 5.5"/>',
+    slides: '<rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8.5 20.5h7M12 16.5v4"/>',
+    award: '<circle cx="12" cy="8.5" r="5.5"/><path d="M15.4 13.2 16.8 21.5 12 18.8 7.2 21.5l1.4-8.3"/>',
+    image: '<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.6"/><path d="m20.5 15.5-4.6-4.6L5 21.5"/>',
+    info: '<circle cx="12" cy="12" r="9.5"/><path d="M12 16.5V11.5"/><path d="M12 7.8h.01"/>',
+    search: '<circle cx="11" cy="11" r="7.5"/><path d="m20.8 20.8-4.4-4.4"/>',
+    box: '<path d="m21 8-9-5-9 5v8l9 5 9-5Z"/><path d="m3.3 7.4 8.7 5 8.7-5"/><path d="M12 22v-9.6"/>',
+    user: '<path d="M19 21v-1.6a4.4 4.4 0 0 0-4.4-4.4H9.4A4.4 4.4 0 0 0 5 19.4V21"/><circle cx="12" cy="7.5" r="4"/>',
+    building: '<path d="M5 21V4a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v17"/><path d="M16 8.5h3a1 1 0 0 1 1 1V21"/><path d="M3 21h18"/><path d="M8.5 7h3.5M8.5 11h3.5M8.5 15h3.5"/>',
+    pin: '<path d="M20 10.5c0 5.4-8 11.5-8 11.5s-8-6.1-8-11.5a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10.5" r="2.8"/>',
+    graduation: '<path d="M22 9 12 4 2 9l10 5 10-5Z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/>',
+    github: '<path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.2 4.7 18.2 5 18.2 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 24 12.5C24 5.9 18.6.5 12 .5Z"/>',
+    arrowRight: '<path d="M4.5 12h14"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/>'
+  };
+
+  function icon(name, cls) {
+    var d = ICON[name];
+    if (!d) return "";
+    var filled = name === "github";
+    return '<svg class="icon' + (cls ? " " + cls : "") + (filled ? " icon--filled" : "") +
+      '" viewBox="0 0 24 24" aria-hidden="true" focusable="false">' + d + "</svg>";
+  }
+
   /* -------------------------------------------------------- theme + lang */
   function applyTheme(theme, announce) {
     state.theme = theme === "dark" ? "dark" : "light";
     document.documentElement.setAttribute("data-theme", state.theme);
     var btn = $("#theme-toggle");
     if (btn) {
-      var icon = $(".toggle__icon", btn);
-      if (icon) icon.textContent = state.theme === "dark" ? "☀️" : "🌙";
+      var slot = $(".toggle__icon", btn);
+      if (slot) slot.innerHTML = icon(state.theme === "dark" ? "sun" : "moon");
       btn.setAttribute("aria-pressed", state.theme === "dark" ? "true" : "false");
     }
     var meta = $('meta[name="theme-color"]');
@@ -176,7 +216,7 @@
       var title = state.lang === "zh" ? (r.titleZh || r.titleEn) : (r.titleEn || r.titleZh);
       var desc = state.lang === "zh" ? (r.descZh || r.descEn) : (r.descEn || r.descZh);
       return '<article class="research-card reveal">' +
-        '<span class="research-card__icon" aria-hidden="true">' + esc(r.icon || "•") + "</span>" +
+        '<span class="research-card__icon">' + icon(r.icon || "chart", "icon--lg") + "</span>" +
         '<h3 class="research-card__title">' + esc(title) + "</h3>" +
         '<p class="research-card__desc">' + esc(desc) + "</p>" +
         "</article>";
@@ -202,13 +242,13 @@
       var links = [];
       var L = pi.links || {};
       if (L.email) {
-        links.push('<a class="pi-card__link" href="mailto:' + esc(L.email) + '">✉️ <span>' + esc(L.email) + "</span></a>");
+        links.push('<a class="pi-card__link" href="mailto:' + esc(L.email) + '">' + icon("mail") + "<span>" + esc(L.email) + "</span></a>");
       }
       if (L.github) {
-        links.push('<a class="pi-card__link" href="' + esc(L.github) + '" target="_blank" rel="noopener">👤 <span>' + esc(t("pi.github")) + "</span></a>");
+        links.push('<a class="pi-card__link" href="' + esc(L.github) + '" target="_blank" rel="noopener">' + icon("github") + "<span>" + esc(t("pi.github")) + "</span></a>");
       }
       if (CFG.contact && CFG.contact.github) {
-        links.push('<a class="pi-card__link" href="' + esc(CFG.contact.github) + '" target="_blank" rel="noopener">🏛️ <span>' + esc(t("contact.github")) + "</span></a>");
+        links.push('<a class="pi-card__link" href="' + esc(CFG.contact.github) + '" target="_blank" rel="noopener">' + icon("building") + "<span>" + esc(t("contact.github")) + "</span></a>");
       }
 
       card.innerHTML = avatar +
@@ -250,7 +290,7 @@
         '<div class="person__avatar" aria-hidden="true">' + esc(initials(name)) + "</div>" +
         '<h3 class="person__name">' + esc(name) + "</h3>" +
         '<p class="person__role">' + esc(role || "") + "</p>" +
-        (p.url ? '<a class="person__link" href="' + esc(p.url) + '" target="_blank" rel="noopener">Homepage →</a>' : "") +
+        (p.url ? '<a class="person__link" href="' + esc(p.url) + '" target="_blank" rel="noopener">Homepage' + icon("arrowRight") + "</a>" : "") +
         "</article>";
     }).join("");
   }
@@ -269,14 +309,14 @@
       var badge = state.lang === "zh" ? (r.badgeZh || r.badgeEn) : (r.badgeEn || r.badgeZh);
       return '<article class="repo reveal">' +
         '<div class="repo__top">' +
-          '<span class="repo__icon" aria-hidden="true">📦</span>' +
+          '<span class="repo__icon">' + icon("box", "icon--lg") + "</span>" +
           '<span class="repo__name">' + esc(r.name) + "</span>" +
         "</div>" +
         '<p class="repo__desc">' + esc(desc) + "</p>" +
         '<div class="repo__foot">' +
           '<span class="repo__lang">' + esc(r.lang || "") + "</span>" +
           (badge ? '<span class="pub__tag">' + esc(badge) + "</span>" : "") +
-          '<a class="repo__link" href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(t("data.view")) + "</a>" +
+          '<a class="repo__link" href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(t("data.view")) + icon("arrowRight") + "</a>" +
         "</div>" +
         "</article>";
     }).join("");
@@ -289,18 +329,18 @@
     var out = [];
 
     if (c.email) {
-      out.push('<a class="contact-line" href="mailto:' + esc(c.email) + '">✉️ <span>' + esc(c.email) + "</span></a>");
+      out.push('<a class="contact-line" href="mailto:' + esc(c.email) + '">' + icon("mail") + "<span>" + esc(c.email) + "</span></a>");
     }
     var addr = state.lang === "zh" ? (c.addressZh || c.addressEn) : (c.addressEn || c.addressZh);
-    if (addr) out.push('<span class="contact-line">📍 <span>' + esc(addr) + "</span></span>");
-    if (c.github) out.push('<a class="contact-line" href="' + esc(c.github) + '" target="_blank" rel="noopener">💻 <span>' + esc(t("contact.github")) + "</span></a>");
-    if (c.githubPersonal) out.push('<a class="contact-line" href="' + esc(c.githubPersonal) + '" target="_blank" rel="noopener">👤 <span>' + esc(t("contact.githubPersonal")) + "</span></a>");
-    if (c.scholar) out.push('<a class="contact-line" href="' + esc(c.scholar) + '" target="_blank" rel="noopener">🎓 <span>Google Scholar</span></a>');
-    if (c.orcid) out.push('<a class="contact-line" href="' + esc(c.orcid) + '" target="_blank" rel="noopener">🆔 <span>ORCID</span></a>');
+    if (addr) out.push('<span class="contact-line">' + icon("pin") + "<span>" + esc(addr) + "</span></span>");
+    if (c.github) out.push('<a class="contact-line" href="' + esc(c.github) + '" target="_blank" rel="noopener">' + icon("building") + "<span>" + esc(t("contact.github")) + "</span></a>");
+    if (c.githubPersonal) out.push('<a class="contact-line" href="' + esc(c.githubPersonal) + '" target="_blank" rel="noopener">' + icon("github") + "<span>" + esc(t("contact.githubPersonal")) + "</span></a>");
+    if (c.scholar) out.push('<a class="contact-line" href="' + esc(c.scholar) + '" target="_blank" rel="noopener">' + icon("graduation") + "<span>Google Scholar</span></a>");
+    if (c.orcid) out.push('<a class="contact-line" href="' + esc(c.orcid) + '" target="_blank" rel="noopener">' + icon("link") + "<span>ORCID</span></a>");
 
     if (!out.length) {
       // 没有任何联系方式时，至少给一个 GitHub 组织入口
-      out.push('<a class="contact-line" href="https://github.com/YileWang-Lab" target="_blank" rel="noopener">💻 <span>GitHub</span></a>');
+      out.push('<a class="contact-line" href="https://github.com/YileWang-Lab" target="_blank" rel="noopener">' + icon("building") + "<span>GitHub</span></a>");
     }
     box.innerHTML = out.join("");
   }
@@ -357,7 +397,7 @@
   }
 
   var LINK_LABEL = { doi: "link.doi", article: "link.article", pdf: "link.pdf", code: "link.code", arxiv: "link.arxiv", ssrn: "link.ssrn", slides: "link.slides" };
-  var LINK_ICON = { doi: "🔗", article: "🌐", pdf: "📄", code: "💻", arxiv: "📄", ssrn: "📄", slides: "📊" };
+  var LINK_ICON = { doi: "link", article: "globe", pdf: "doc", code: "code", arxiv: "doc", ssrn: "doc", slides: "slides" };
 
   function renderPub(p) {
     var ti = pubTitle(p);
@@ -377,19 +417,19 @@
       var url = L[k];
       if (!url) return;
       links += '<a class="pub__link" href="' + esc(url) + '" target="_blank" rel="noopener">' +
-        '<span aria-hidden="true">' + LINK_ICON[k] + "</span>" + esc(t(LINK_LABEL[k])) + "</a>";
+        icon(LINK_ICON[k]) + esc(t(LINK_LABEL[k])) + "</a>";
     });
     if (p.certificate) {
       links += '<button type="button" class="pub__link"' +
         ' data-lightbox="' + esc(p.certificate) + '"' +
         ' data-caption="' + esc(ti.main) + '">' +
-        '<span aria-hidden="true">🎓</span>' + esc(t("link.certificate")) + "</button>";
+        icon("award") + esc(t("link.certificate")) + "</button>";
     }
     if (p.banner) {
       links += '<button type="button" class="pub__link"' +
         ' data-lightbox="' + esc(p.banner) + '"' +
         ' data-caption="' + esc(ti.main) + '">' +
-        '<span aria-hidden="true">🖼️</span>' + esc(t("link.banner")) + "</button>";
+        icon("image") + esc(t("link.banner")) + "</button>";
     }
 
     // 缩略图：有论文配图就用配图，没有就用「期刊名 + 年份」的占位块，
@@ -422,7 +462,7 @@
       "</h3>" +
       (authors ? '<p class="pub__authors">' + authors + "</p>" : "") +
       (p.venue ? '<p class="pub__venue">' + esc(p.venue) + (p.year ? ' <span class="yr">· ' + esc(p.year) + "</span>" : "") + "</p>" : "") +
-      (note ? '<p class="pub__note">ℹ️ ' + esc(note) + "</p>" : "") +
+      (note ? '<p class="pub__note">' + icon("info") + esc(note) + "</p>" : "") +
       (links ? '<div class="pub__links">' + links + "</div>" : "") +
       tags +
       "</div></article>";
@@ -435,7 +475,7 @@
     var list = visiblePubs();
 
     if (!list.length) {
-      box.innerHTML = '<div class="pub-empty"><div class="pub-empty__icon" aria-hidden="true">🔍</div><p>' + esc(t("pubs.empty")) + "</p></div>";
+      box.innerHTML = '<div class="pub-empty"><div class="pub-empty__icon">' + icon("search", "icon--xl") + "</div><p>" + esc(t("pubs.empty")) + "</p></div>";
       return;
     }
 

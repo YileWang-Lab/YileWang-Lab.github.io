@@ -98,7 +98,7 @@ window.I18N = {
     "data.eyebrow": "数据与代码",
     "data.title": "开放的研究材料",
     "data.lead": "我们把整理好的数据、字段字典与处理脚本放在公开仓库里，方便复用与核对。",
-    "data.view": "查看仓库 →",
+    "data.view": "查看仓库",
 
     "contact.eyebrow": "联系我们",
     "contact.title": "欢迎交流与合作",
@@ -206,7 +206,7 @@ window.I18N = {
     "data.eyebrow": "Data & Code",
     "data.title": "Open research materials",
     "data.lead": "Curated datasets, field dictionaries and processing scripts live in our public repositories, ready to reuse and verify.",
-    "data.view": "View repository →",
+    "data.view": "View repository",
 
     "contact.eyebrow": "Contact",
     "contact.title": "Let's work together",

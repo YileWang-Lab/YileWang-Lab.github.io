@@ -45,12 +45,11 @@
   --maxw: 1140px;
   --header-h: 64px;
 
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-               "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
-               "Noto Sans SC", "Source Han Sans SC", "WenQuanYi Micro Hei",
-               Arial, sans-serif;
-  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
-                Georgia, "Songti SC", "SimSun", serif;
+  /* 字体：参照 irongroup.sjtu.edu.cn 的做法 —— 全站无衬线，中西文分开回退，
+     Arial 负责西文，中文字符回退到雅黑 / 苹方。不加载任何网络字体。 */
+  --font-sans: Arial, "Helvetica Neue", Helvetica, "Microsoft YaHei", "微软雅黑",
+               "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC",
+               "Source Han Sans SC", "WenQuanYi Micro Hei", sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
                "Liberation Mono", monospace;
 }
@@ -136,6 +135,18 @@ button { font: inherit; color: inherit; cursor: pointer; }
   overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
 
+/* ---------------------------------------------------------------- icons */
+/* 内联 SVG 图标，代替 emoji：无外部字体、跨平台渲染一致、可跟随文字颜色 */
+.icon {
+  width: 1.05em; height: 1.05em; flex-shrink: 0;
+  display: inline-block; vertical-align: -.15em;
+  fill: none; stroke: currentColor;
+  stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round;
+}
+.icon--lg { width: 1.5em; height: 1.5em; stroke-width: 1.7; vertical-align: -.32em; }
+.icon--xl { width: 1.8em; height: 1.8em; stroke-width: 1.55; vertical-align: middle; }
+.icon--filled { fill: currentColor; stroke: none; }
+
 /* ---------------------------------------------------------------- layout */
 .wrap {
   width: 100%;
@@ -166,10 +177,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 .section-title {
-  font-family: var(--font-serif);
-  font-size: clamp(1.6rem, 3.4vw, 2.3rem);
-  line-height: 1.25;
-  letter-spacing: -.015em;
+  font-family: var(--font-sans);
+  font-size: clamp(1.5rem, 3.2vw, 2.05rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -.01em;
   margin: 0 0 16px;
   color: var(--text);
 }
@@ -212,7 +224,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   border-radius: 10px;
   background: linear-gradient(145deg, var(--navy-700), var(--navy-900));
   color: var(--gold-400);
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: .84rem; font-weight: 700; letter-spacing: .04em;
   box-shadow: var(--shadow-sm);
 }
@@ -301,14 +313,14 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 .hero__title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.1rem, 5.6vw, 3.55rem);
-  line-height: 1.12;
-  letter-spacing: -.025em;
+  font-family: var(--font-sans);
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  line-height: 1.18;
+  letter-spacing: -.02em;
   margin: 0 0 20px;
   color: #fff;
   font-weight: 700;
-  max-width: 20ch;
+  max-width: 22ch;
 }
 .hero__title em {
   font-style: normal;
@@ -354,7 +366,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   border-top: 1px solid rgba(255,255,255,.15);
 }
 .stat__num {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 2rem; font-weight: 700; line-height: 1;
   color: #fff;
 }
@@ -404,7 +416,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .story__mark {
   position: absolute; top: 6px; left: 26px;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 7rem; line-height: 1;
   color: var(--gold-500); opacity: .16;
   pointer-events: none; user-select: none;
@@ -424,9 +436,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 .story__sign {
   margin: 26px 0 0;
-  font-family: var(--font-serif);
-  font-size: 1.05rem;
-  letter-spacing: .04em;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: .02em;
   color: var(--gold-600);
   text-align: right;
 }
@@ -460,9 +473,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .research-card:hover::before { opacity: 1; }
 .research-card__icon {
-  font-size: 1.7rem; line-height: 1; margin-bottom: 15px;
-  display: block;
+  display: block; margin-bottom: 16px;
+  font-size: 1.25rem; line-height: 1;
+  color: var(--navy-600);
 }
+[data-theme="dark"] .research-card__icon { color: var(--gold-400); }
 .research-card__title {
   margin: 0 0 10px; font-size: 1.06rem; font-weight: 650;
   letter-spacing: -.01em; color: var(--text);
@@ -521,7 +536,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .pub-year {
   display: flex; align-items: center; gap: 15px;
   margin: 0 0 18px;
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 1.4rem; font-weight: 700; color: var(--text);
 }
 .pub-year::after {
@@ -577,7 +592,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .pub__thumb--conference { background: linear-gradient(150deg, #1d4a53 0%, #0b1e24 100%); color: #8fd8d0; }
 .pub__thumb--working    { background: linear-gradient(150deg, #4a4258 0%, #1b1822 100%); color: #cdbdf0; }
 .pub__thumb-name {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: clamp(1rem, 1.5vw, 1.22rem);
   font-weight: 700; line-height: 1.3;
   padding: 0 20px; max-width: 100%;
@@ -661,7 +676,7 @@ button.pub__link { font-family: inherit; cursor: zoom-in; }
   background: var(--surface); border: 1px dashed var(--border-strong);
   border-radius: var(--radius); color: var(--text-muted);
 }
-.pub-empty__icon { font-size: 2rem; margin-bottom: 12px; opacity: .55; }
+.pub-empty__icon { font-size: 1.35rem; margin-bottom: 14px; color: var(--text-muted); }
 
 /* ---------------------------------------------------------------- 团队负责人 */
 .pi-grid {
@@ -690,7 +705,7 @@ button.pub__link { font-family: inherit; cursor: zoom-in; }
   border-radius: 50%; display: grid; place-items: center;
   background: linear-gradient(145deg, var(--navy-700), var(--navy-900));
   color: var(--gold-400);
-  font-family: var(--font-serif); font-size: 2.5rem; font-weight: 700;
+  font-family: var(--font-sans); font-size: 2.5rem; font-weight: 700;
   box-shadow: var(--shadow-md);
 }
 .pi-card__name {
@@ -746,7 +761,7 @@ button.pub__link { font-family: inherit; cursor: zoom-in; }
   width: 62px; height: 62px; margin: 0 auto 15px;
   border-radius: 50%; display: grid; place-items: center;
   background: linear-gradient(145deg, var(--navy-700), var(--navy-900));
-  color: var(--gold-400); font-family: var(--font-serif);
+  color: var(--gold-400); font-family: var(--font-sans);
   font-size: 1.35rem; font-weight: 700;
 }
 .person__name { margin: 0 0 5px; font-size: 1rem; font-weight: 650; color: var(--text); }
@@ -764,7 +779,7 @@ button.pub__link { font-family: inherit; cursor: zoom-in; }
 }
 .repo:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--border-strong); }
 .repo__top { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-.repo__icon { font-size: 1.15rem; }
+.repo__icon { font-size: 1rem; color: var(--navy-600); display: inline-flex; }
 .repo__name {
   font-family: var(--font-mono); font-size: .92rem; font-weight: 700;
   color: var(--text); word-break: break-all;
