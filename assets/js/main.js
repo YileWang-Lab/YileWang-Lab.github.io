@@ -219,11 +219,15 @@
 
     var bio = $("#pi-bio");
     if (bio) {
-      bio.innerHTML = ["pi.bio1", "pi.bio2", "pi.bio3", "pi.bio4"].map(function (k, i) {
-        var v = t(k);
-        if (!v || v === k) return "";
-        return "<p" + (i === 0 ? ' class="pi-bio__lead"' : "") + ">" + rich(v) + "</p>";
-      }).join("");
+      // 依次读取 pi.bio1、pi.bio2…直到某个编号没有定义为止，
+      // 这样在 i18n.js 里增删段落不需要改这里。
+      var out = [];
+      for (var i = 1; i <= 12; i++) {
+        var v = t("pi.bio" + i);
+        if (!v || v === "pi.bio" + i) break;
+        out.push("<p" + (i === 1 ? ' class="pi-bio__lead"' : "") + ">" + rich(v) + "</p>");
+      }
+      bio.innerHTML = out.join("");
     }
   }
 

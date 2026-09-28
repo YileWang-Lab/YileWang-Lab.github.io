@@ -87,10 +87,11 @@ window.I18N = {
 
     "pi.eyebrow": "团队负责人",
     "pi.lead": "从本科阶段开始独立做研究，把过程和方法都留了下来。",
-    "pi.bio1": "王毅乐，课题组负责人，主要研究**金融科技、能源与环境经济学、机器学习与智能预测、宏观发展评估**。",
-    "pi.bio2": "他从本科阶段就开始独立开展研究。在缺乏系统指导的条件下，他与课题组的同学一起完成了多项实证与建模工作，成果发表于 Systems、Sustainability、Frontiers in Economics and Management 以及 IEEE 系列国际会议。",
-    "pi.bio3": "他坚持研究应当能被别人重新做一遍。课题组把清洗好的双语数据、字段字典、来源核查记录和可重跑的分析代码一并公开，让「来源 → 清洗 → 建模」的每一步都留在可以核对的地方。除论文之外，他长期维护二十余个开源仓库，把课程材料、研究教程与数据分析工具一并开放。",
-    "pi.bio4": "如果你也对科研感兴趣，欢迎直接写信给他。",
+    "pi.bio1": "王毅乐，课题组负责人，本科阶段即独立开展研究。他的兴趣位于**随机建模、统计学习与机器学习的交叉处**——以随机过程、空间马尔可夫链、主成分分析等经典数学工具为骨架，结合现代机器学习与深度学习，处理真实的金融与经济问题。",
+    "pi.bio2": "已发表的工作覆盖：双重机器学习与 IPO 定价效率、Prophet 与深度时空建模的光伏发电预测、数字经济与碳排放耦合协调的空间马尔可夫分析、可解释深度学习（SSA-LSTM + SHAP）的省级能源贫困预测、Swin Transformer 与 U-Net 的古文字分割识别，以及 PCA-Stacking 的发展轨迹多维评估。",
+    "pi.bio3": "他把严谨的数学推理——从测度论概率到随机分析——看作可信机器学习的基石，尤其关注如何让数据驱动的模型更可解释、更有理论依据、在不确定性下更稳健。",
+    "pi.bio4": "他坚持研究应当能被别人重新做一遍：课题组把清洗好的双语数据、字段字典、来源核查记录和可重跑的分析代码一并公开，让「来源 → 清洗 → 建模」的每一步都留在可以核对的地方。除论文之外，他长期维护二十余个开源仓库，把课程材料、研究教程与数据分析工具一并开放。",
+    "pi.bio5": "他欢迎跨学科的合作，也欢迎对科研感兴趣的同学直接写信给他。",
     "pi.github": "个人 GitHub",
     "pi.members": "其他成员",
 
@@ -194,10 +195,11 @@ window.I18N = {
 
     "pi.eyebrow": "Principal Investigator",
     "pi.lead": "He started doing research as an undergraduate — and kept the process, not just the results.",
-    "pi.bio1": "Yile Wang leads the group. His work covers **financial technology, energy and environmental economics, machine learning for forecasting, and macro development assessment**.",
-    "pi.bio2": "He began doing research independently as an undergraduate. With no supervisor guiding him, he and the students in this group completed a series of empirical and modelling projects, published in Systems, Sustainability, Frontiers in Economics and Management and IEEE conferences.",
-    "pi.bio3": "He believes research should be something others can rebuild from scratch. The group publishes its cleaned bilingual datasets, field dictionaries, source-audit records and re-runnable analysis code, so every step from source to model stays open to checking. Beyond papers, he maintains more than twenty public repositories covering course materials, research tutorials and data-analysis tooling.",
-    "pi.bio4": "If you are interested in research, you are welcome to write to him directly.",
+    "pi.bio1": "Yile Wang leads the group and began doing research independently as an undergraduate. His interests sit at the **intersection of stochastic modelling, statistical learning and machine learning** — using classical tools such as stochastic processes, spatial Markov chains and principal component analysis as the skeleton, combined with modern machine learning and deep learning, to tackle real problems in finance and economics.",
+    "pi.bio2": "Published work so far covers double machine learning for IPO pricing efficiency, Prophet-based deep spatiotemporal forecasting of photovoltaic power, spatial Markov analysis of the coupling coordination between China's digital economy and carbon emissions, explainable deep learning (SSA-LSTM + SHAP) for provincial energy-poverty prediction, Swin Transformer + U-Net frameworks for ancient-character segmentation and recognition, and PCA-Stacking hybrids for multidimensional development assessment.",
+    "pi.bio3": "He treats rigorous mathematical reasoning — from measure-theoretic probability to stochastic calculus — as the cornerstone of trustworthy machine learning, and is particularly interested in making data-driven models more interpretable, theoretically grounded and robust under uncertainty.",
+    "pi.bio4": "He believes research should be something others can rebuild from scratch. The group publishes its cleaned bilingual datasets, field dictionaries, source-audit records and re-runnable analysis code, so every step from source to model stays open to checking. Beyond papers, he maintains more than twenty public repositories covering course materials, research tutorials and data-analysis tooling.",
+    "pi.bio5": "He welcomes interdisciplinary collaboration — and any student interested in research is welcome to write to him directly.",
     "pi.github": "Personal GitHub",
     "pi.members": "Members",
 

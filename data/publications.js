@@ -85,14 +85,30 @@ window.PUBLICATIONS = [
     type: "journal",
     status: "published",
     links: {
+      doi: "https://doi.org/10.3390/su18199871",
       article: "https://www.mdpi.com/2071-1050/18/19/9871"
     },
     tags: ["生成式人工智能", "高等教育", "可持续发展"],
     figure: "assets/figures/sustainability-9871.jpg",
     banner: "assets/banners/sustainability-9871.jpg",
     certificate: "assets/certificates/sustainability-9871.jpg",
-    noteEn: "MDPI · Open Access。DOI 10.3390/su18199871 尚未在 Crossref 注册，暂以 MDPI 页面为准。",
-    noteZh: "MDPI 开放获取。DOI 10.3390/su18199871 尚未在 Crossref 注册，暂以 MDPI 页面为准。"
+    noteEn: "MDPI · Open Access",
+    noteZh: "MDPI 开放获取"
+  },
+
+  {
+    titleEn: "Optimal Guarantee Level Optimization for Agricultural Insurance-Futures Based on CRRA Utility Maximization",
+    titleZh: "基于 CRRA 效用最大化的农业保险—期货最优保障水平优化",
+    authors: ["**Yile Wang**"],
+    venue: "Agricultural & Forestry Economics and Management, Vol. 9, Issue 1",
+    venueShort: "Agri. & Forestry Econ.",
+    year: 2026,
+    type: "journal",
+    status: "published",
+    links: { doi: "https://doi.org/10.23977/agrfem.2026.090110" },
+    tags: ["农业保险", "期货", "CRRA 效用", "风险管理"],
+    noteEn: "Author list could not be retrieved from the publisher — please check.",
+    noteZh: "出版方页面无法访问，合作者名单待确认。"
   },
 
   /* ======================= 2025 ======================= */
