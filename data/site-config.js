@@ -33,8 +33,20 @@ window.SITE_CONFIG = {
     // 外部主页，留空则不显示该按钮
     scholar: "",
     orcid: "",
-    github: "https://github.com/YileWang-Lab"
+    github: "https://github.com/YileWang-Lab",
+    // 个人 GitHub（首屏"个人开源仓库"数字的来源）；不想显示就留空
+    githubPersonal: "https://github.com/KarlHeinrich-jpg"
   },
+
+  /* ---- 首屏数字 / Hero stats ------------------------------------------- */
+  // 想加/减一项就增删数组元素；不需要就把整个数组改成 []
+  // ⚠️ 个人仓库数是写死的（站点不请求任何外部接口，国内访问才稳定）。
+  //    想更新可以跑 `node tools/refresh-repo-count.js`，或手动改下面的 value。
+  stats: [
+    { value: 23, labelEn: "Personal repositories", labelZh: "个人开源仓库" },
+    { value: 2,  labelEn: "Lab repositories",      labelZh: "课题组仓库" },
+    { value: 4,  labelEn: "Research areas",        labelZh: "研究方向" }
+  ],
 
   /* ---- 关联仓库 / Related repositories --------------------------------- */
   repos: [

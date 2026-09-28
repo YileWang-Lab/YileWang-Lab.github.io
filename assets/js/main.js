@@ -242,6 +242,7 @@
     var addr = state.lang === "zh" ? (c.addressZh || c.addressEn) : (c.addressEn || c.addressZh);
     if (addr) out.push('<span class="contact-line">📍 <span>' + esc(addr) + "</span></span>");
     if (c.github) out.push('<a class="contact-line" href="' + esc(c.github) + '" target="_blank" rel="noopener">💻 <span>' + esc(t("contact.github")) + "</span></a>");
+    if (c.githubPersonal) out.push('<a class="contact-line" href="' + esc(c.githubPersonal) + '" target="_blank" rel="noopener">👤 <span>' + esc(t("contact.githubPersonal")) + "</span></a>");
     if (c.scholar) out.push('<a class="contact-line" href="' + esc(c.scholar) + '" target="_blank" rel="noopener">🎓 <span>Google Scholar</span></a>');
     if (c.orcid) out.push('<a class="contact-line" href="' + esc(c.orcid) + '" target="_blank" rel="noopener">🆔 <span>ORCID</span></a>');
 
@@ -256,20 +257,15 @@
     var box = $("#hero-stats");
     if (!box) return;
 
-    var years = PUBS.map(function (p) { return parseInt(p.year, 10); }).filter(function (y) { return !isNaN(y); });
-    var journals = PUBS.filter(function (p) { return p.type === "journal"; }).length;
-    var span = 0;
-    if (years.length) span = Math.max.apply(null, years) - Math.min.apply(null, years) + 1;
-
-    var stats = [
-      [PUBS.length, t("hero.stat.pubs")],
-      [journals, t("hero.stat.journals")],
-      [span, t("hero.stat.years")],
-      [(CFG.repos || []).length, t("hero.stat.repos")]
-    ];
+    // 数字全部来自 data/site-config.js 的 stats，不在前端请求任何外部接口：
+    // 一是保持零外部依赖，二是 api.github.com 在国内经常连不上或超时。
+    var stats = Array.isArray(CFG.stats) ? CFG.stats : [];
+    if (!stats.length) { box.innerHTML = ""; return; }
 
     box.innerHTML = stats.map(function (s) {
-      return '<div class="stat"><div class="stat__num">' + esc(s[0]) + '</div><div class="stat__label">' + esc(s[1]) + "</div></div>";
+      var label = state.lang === "zh" ? (s.labelZh || s.labelEn) : (s.labelEn || s.labelZh);
+      return '<div class="stat"><div class="stat__num">' + esc(s.value) + '</div>' +
+             '<div class="stat__label">' + esc(label) + "</div></div>";
     }).join("");
   }
 

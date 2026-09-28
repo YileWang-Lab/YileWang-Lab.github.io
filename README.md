@@ -85,10 +85,33 @@
 
 - `labNameEn` / `labNameZh` —— 课题组名称
 - `labMonogram` —— 页头左上角的缩写（1–3 个字符最好看）
-- `contact.email` / `contact.addressZh` / `contact.scholar` / `contact.orcid`
+- `contact.email` / `contact.github` / `contact.githubPersonal` / `contact.scholar` / `contact.orcid`
+- `stats` —— **首屏那排数字**
 - `research` —— 研究方向卡片
 - `team` —— 团队成员
 - `repos` —— "数据与代码"板块里展示的仓库
+
+### 首屏数字（stats）
+
+```js
+stats: [
+  { value: 23, labelEn: "Personal repositories", labelZh: "个人开源仓库" },
+  { value: 2,  labelEn: "Lab repositories",      labelZh: "课题组仓库" },
+  { value: 4,  labelEn: "Research areas",        labelZh: "研究方向" }
+],
+```
+
+增删数组元素即可增删数字；整个数组改成 `[]` 就隐藏这一排。
+
+数字是**写死**的 —— 站点刻意不请求任何外部接口，这样既零依赖，在国内访问也更稳
+（`api.github.com` 经常连不上或超时）。个人仓库数会随时间过期，想更新就跑：
+
+```bash
+node tools/refresh-repo-count.js   # 需要 Node 18+，会读 site-config 里的 githubPersonal
+```
+
+它会查一次 GitHub 并把 `个人开源仓库` 的数字改掉，然后 commit + push 即可。
+连不上时也可以手动改 `value`。
 
 ---
 

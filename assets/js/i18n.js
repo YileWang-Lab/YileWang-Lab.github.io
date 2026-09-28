@@ -31,10 +31,6 @@ window.I18N = {
     "hero.desc": "我们关注金融市场中的定价、风险与预测问题，用严谨的计量方法与机器学习工具做可复现的实证研究，并把数据与代码开放出来。",
     "hero.cta_pubs": "查看论文成果",
     "hero.cta_contact": "联系我们",
-    "hero.stat.pubs": "论文成果",
-    "hero.stat.journals": "期刊论文",
-    "hero.stat.years": "覆盖年份",
-    "hero.stat.repos": "开源仓库",
 
     "about.eyebrow": "关于我们",
     "about.title": "让金融研究可复现、可复用",
@@ -103,6 +99,7 @@ window.I18N = {
     "contact.title": "欢迎交流与合作",
     "contact.lead": "无论是学术合作、数据问题还是加入课题组的意向，都欢迎通过下面的方式联系我们。",
     "contact.github": "GitHub 组织",
+    "contact.githubPersonal": "个人 GitHub",
 
     "footer.nav": "快速链接",
     "footer.rights": "版权所有。",
@@ -137,10 +134,6 @@ window.I18N = {
     "hero.desc": "We study pricing, risk and prediction problems in financial markets — combining careful econometrics with machine learning, and publishing the data and code behind every result.",
     "hero.cta_pubs": "Browse publications",
     "hero.cta_contact": "Get in touch",
-    "hero.stat.pubs": "Publications",
-    "hero.stat.journals": "Journal articles",
-    "hero.stat.years": "Years covered",
-    "hero.stat.repos": "Open repositories",
 
     "about.eyebrow": "About",
     "about.title": "Research that others can reproduce",
@@ -209,6 +202,7 @@ window.I18N = {
     "contact.title": "Let's work together",
     "contact.lead": "Academic collaboration, data questions, or interest in joining the group — reach us through any of the channels below.",
     "contact.github": "GitHub organization",
+    "contact.githubPersonal": "Personal GitHub",
 
     "footer.nav": "Quick links",
     "footer.rights": "All rights reserved.",
