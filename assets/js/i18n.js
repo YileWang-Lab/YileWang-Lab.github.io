@@ -17,6 +17,7 @@ window.I18N = {
     "a11y.lang": "切换语言",
     "a11y.menu": "打开菜单",
     "a11y.zoom": "点击放大查看",
+    "a11y.openOriginal": "（在新标签页打开论文原文）",
     "a11y.lightbox": "图片查看",
     "a11y.close": "关闭",
 
@@ -76,6 +77,7 @@ window.I18N = {
     "status.working": "工作论文",
 
     "link.doi": "DOI",
+    "link.original": "论文原文",
     "link.article": "文章页面",
     "link.pdf": "PDF",
     "link.code": "代码",
@@ -125,6 +127,7 @@ window.I18N = {
     "a11y.lang": "Switch language",
     "a11y.menu": "Open menu",
     "a11y.zoom": "Click to enlarge",
+    "a11y.openOriginal": "(opens the original paper in a new tab)",
     "a11y.lightbox": "Image viewer",
     "a11y.close": "Close",
 
@@ -184,6 +187,7 @@ window.I18N = {
     "status.working": "Working paper",
 
     "link.doi": "DOI",
+    "link.original": "Original paper",
     "link.article": "Article page",
     "link.pdf": "PDF",
     "link.code": "Code",

@@ -664,6 +664,27 @@ button { font: inherit; color: inherit; cursor: pointer; }
 /* <button> 版本要和 <a> 版本长得一样 */
 button.pub__link { font-family: inherit; cursor: zoom-in; }
 
+/* 「论文原文」：卡片里最主要的动作，用实心强调色，和普通浅色小按钮区分开。
+   深色主题沿用站点既有的金色主色（与筛选 chip、语言切换按钮一致）。 */
+.pub__link--primary {
+  border-color: var(--navy-700); background: var(--navy-700);
+  color: #fff; font-weight: 700;
+}
+.pub__link--primary:hover {
+  background: var(--navy-800); border-color: var(--navy-800); color: #fff;
+}
+[data-theme="dark"] .pub__link--primary {
+  background: var(--gold-600); border-color: var(--gold-600); color: #12100a;
+}
+[data-theme="dark"] .pub__link--primary:hover {
+  background: var(--gold-500); border-color: var(--gold-500); color: #12100a;
+}
+
+/* 标题本身也是通往论文原文的入口：平时保持标题外观，悬停时才透出链接感 */
+.pub__title-link { color: inherit; text-decoration: none; }
+.pub__title-link:hover { color: var(--navy-600); text-decoration: underline; text-underline-offset: 3px; }
+[data-theme="dark"] .pub__title-link:hover { color: var(--gold-400); }
+
 .pub__tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
 .pub__tag {
   padding: 2px 9px; border-radius: 5px;

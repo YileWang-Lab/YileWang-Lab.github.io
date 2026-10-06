@@ -98,7 +98,8 @@
     pin: '<path d="M20 10.5c0 5.4-8 11.5-8 11.5s-8-6.1-8-11.5a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10.5" r="2.8"/>',
     graduation: '<path d="M22 9 12 4 2 9l10 5 10-5Z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/>',
     github: '<path d="M12 .5C5.4.5 0 5.9 0 12.5c0 5.3 3.4 9.8 8.2 11.4.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.2 4.7 18.2 5 18.2 5c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 24 12.5C24 5.9 18.6.5 12 .5Z"/>',
-    arrowRight: '<path d="M4.5 12h14"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/>'
+    arrowRight: '<path d="M4.5 12h14"/><path d="m12.5 5.5 6.5 6.5-6.5 6.5"/>',
+    external: '<path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>'
   };
 
   function icon(name, cls) {
@@ -405,6 +406,10 @@
       return rich(a);
     }).join(", ");
 
+    // 「论文原文」的目标地址：优先出版商文章页，缺省时退回 DOI —— DOI 同样会解析到出版商官方页面
+    var L = p.links || {};
+    var originalUrl = L.article || L.doi || "";
+
     var badges = [];
     var statusLabel = t("status." + (p.status || "published"));
     badges.push('<span class="badge badge--' + esc(p.status || "published") + '">' + esc(statusLabel) + "</span>");
@@ -412,10 +417,15 @@
     if (p.venueShort) badges.push('<span class="badge badge--venue">' + esc(p.venueShort) + "</span>");
 
     var links = "";
-    var L = p.links || {};
+    if (originalUrl) {
+      links += '<a class="pub__link pub__link--primary" href="' + esc(originalUrl) + '" target="_blank" rel="noopener">' +
+        icon("external") + esc(t("link.original")) + "</a>";
+    }
     Object.keys(LINK_LABEL).forEach(function (k) {
       var url = L[k];
       if (!url) return;
+      if (k === "article") return;                     // 由「论文原文」按钮承担，避免重复
+      if (k === "doi" && url === originalUrl) return;  // 别和「论文原文」指向同一处
       links += '<a class="pub__link" href="' + esc(url) + '" target="_blank" rel="noopener">' +
         icon(LINK_ICON[k]) + esc(t(LINK_LABEL[k])) + "</a>";
     });
@@ -448,6 +458,14 @@
         "</div>";
     }
 
+    // 标题本身就是通往论文原文的入口；再补一句只给读屏用的说明
+    var titleInner = esc(ti.main) +
+      (ti.alt ? '<span class="pub__title-zh">' + esc(ti.alt) + "</span>" : "");
+    var titleHtml = originalUrl
+      ? '<a class="pub__title-link" href="' + esc(originalUrl) + '" target="_blank" rel="noopener">' +
+          titleInner + '<span class="sr-only">' + esc(t("a11y.openOriginal")) + "</span></a>"
+      : titleInner;
+
     var note = state.lang === "zh" ? (p.noteZh || p.noteEn) : (p.noteEn || p.noteZh);
     var tags = (p.tags || []).length
       ? '<div class="pub__tags">' + p.tags.map(function (x) { return '<span class="pub__tag">' + esc(x) + "</span>"; }).join("") + "</div>"
@@ -457,9 +475,7 @@
       thumb +
       '<div class="pub__body">' +
       '<div class="pub__badges">' + badges.join("") + "</div>" +
-      '<h3 class="pub__title">' + esc(ti.main) +
-        (ti.alt ? '<span class="pub__title-zh">' + esc(ti.alt) + "</span>" : "") +
-      "</h3>" +
+      '<h3 class="pub__title">' + titleHtml + "</h3>" +
       (authors ? '<p class="pub__authors">' + authors + "</p>" : "") +
       (p.venue ? '<p class="pub__venue">' + esc(p.venue) + (p.year ? ' <span class="yr">· ' + esc(p.year) + "</span>" : "") + "</p>" : "") +
       (note ? '<p class="pub__note">' + icon("info") + esc(note) + "</p>" : "") +

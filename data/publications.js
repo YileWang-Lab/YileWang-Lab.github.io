@@ -16,6 +16,7 @@
  *  type       "journal" 期刊 | "conference" 会议 | "working" 工作论文 | "book" 专著章节
  *  status     "accepted" 已录用 | "published" 已发表 | "forthcoming" 即将刊出 | "working" 工作论文
  *  links      链接对象：doi / article / pdf / code / arxiv / ssrn / slides，没有的就删掉
+ *             article 是出版商原文页：卡片标题与「论文原文」按钮优先用它，缺省时回退到 doi
  *  tags       关键词数组，显示成灰色小标签（可留空 []）
  *  banner     卡片横幅图路径（可省略）
  *  figure     论文配图路径，显示为卡片顶部缩略图（可省略；没有则用期刊名占位块）
@@ -105,7 +106,10 @@ window.PUBLICATIONS = [
     year: 2026,
     type: "journal",
     status: "published",
-    links: { doi: "https://doi.org/10.23977/agrfem.2026.090110" },
+    links: {
+      doi: "https://doi.org/10.23977/agrfem.2026.090110",
+      article: "https://www.clausiuspress.com/article/18020.html"
+    },
     tags: ["农业保险", "期货", "CRRA 效用", "风险管理"],
     noteEn: "Author list could not be retrieved from the publisher — please check.",
     noteZh: "出版方页面无法访问，合作者名单待确认。"
@@ -123,7 +127,10 @@ window.PUBLICATIONS = [
     date: "2025-12-05",
     type: "conference",
     status: "published",
-    links: { doi: "https://doi.org/10.1109/itcem68692.2025.00050" },
+    links: {
+      doi: "https://doi.org/10.1109/itcem68692.2025.00050",
+      article: "https://ieeexplore.ieee.org/document/11455037/"
+    },
     tags: ["金融科技", "IPO 定价", "双重机器学习", "投资者情绪"]
   },
 
@@ -137,7 +144,10 @@ window.PUBLICATIONS = [
     date: "2025-10-22",
     type: "conference",
     status: "published",
-    links: { doi: "https://doi.org/10.1109/iccasit66611.2025.11348884" },
+    links: {
+      doi: "https://doi.org/10.1109/iccasit66611.2025.11348884",
+      article: "https://ieeexplore.ieee.org/document/11348884/"
+    },
     tags: ["计算机视觉", "Swin Transformer", "U-Net", "古文字识别"]
   },
 
@@ -151,7 +161,10 @@ window.PUBLICATIONS = [
     date: "2025-08-29",
     type: "conference",
     status: "published",
-    links: { doi: "https://doi.org/10.1109/icpics66386.2025.11347268" },
+    links: {
+      doi: "https://doi.org/10.1109/icpics66386.2025.11347268",
+      article: "https://ieeexplore.ieee.org/document/11347268/"
+    },
     tags: ["能源预测", "光伏发电", "Prophet", "时空建模"]
   },
 
@@ -165,7 +178,10 @@ window.PUBLICATIONS = [
     date: "2025-08-01",
     type: "journal",
     status: "published",
-    links: { doi: "https://doi.org/10.6981/FEM.202508_6(8).0022" },
+    links: {
+      doi: "https://doi.org/10.6981/FEM.202508_6(8).0022",
+      article: "https://fieam.org/index.php/ojs/article/view/74"
+    },
     tags: ["宏观与发展", "就业景气指数", "大数据"]
   },
 
@@ -179,7 +195,10 @@ window.PUBLICATIONS = [
     date: "2025-07-01",
     type: "journal",
     status: "published",
-    links: { doi: "https://doi.org/10.6981/FEM.202507_6(7).0018" },
+    links: {
+      doi: "https://doi.org/10.6981/FEM.202507_6(7).0018",
+      article: "https://fieam.org/index.php/ojs/article/view/49"
+    },
     tags: ["宏观与发展", "PCA-Stacking", "现代化进程"]
   }
 
