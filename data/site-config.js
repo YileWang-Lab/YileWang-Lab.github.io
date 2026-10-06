@@ -70,6 +70,42 @@ window.SITE_CONFIG = {
     }
   ],
 
+  /* ---- 友情链接 / Friendly links ---------------------------------------- */
+  // 卡片样式复用「数据与代码」那一块。icon 用图标名：user / book / globe / github / code
+  // 增删条目直接改这个数组；清空成 [] 则该板块整体隐藏。
+  friendlyLinks: [
+    {
+      icon: "user",
+      titleEn: "Yile Wang — Personal Site",
+      titleZh: "王毅乐 · 个人主页",
+      descEn: "Research portfolio: areas, publications, projects and current work.",
+      descZh: "个人研究主页：研究方向、论文、项目与近期工作。",
+      url: "https://karlheinrich-jpg.github.io/",
+      badgeEn: "Homepage",
+      badgeZh: "个人主页"
+    },
+    {
+      icon: "book",
+      titleEn: "Research Survival Handbook",
+      titleZh: "科研新生工具生存手册",
+      descEn: "A GitBook for students starting research: tools, workflow and the pitfalls to avoid.",
+      descZh: "写给刚接触科研的同学的工具与流程手册：怎么做、怎么少踩坑。",
+      url: "https://karlheinrich-jpg.github.io/research-guide-gitbook/",
+      badgeEn: "GitBook",
+      badgeZh: "GitBook"
+    },
+    {
+      icon: "github",
+      titleEn: "Personal GitHub",
+      titleZh: "个人 GitHub",
+      descEn: "Course materials, paper-replication tutorials and research data, all open.",
+      descZh: "课程材料、论文复现教程与研究数据，全部开源。",
+      url: "https://github.com/KarlHeinrich-jpg",
+      badgeEn: "GitHub",
+      badgeZh: "GitHub"
+    }
+  ],
+
   /* ---- 研究方向 / Research areas --------------------------------------- */
   // 按课题组已发表论文的实际方向归纳。
   // icon 用图标名（不是 emoji）：trending / leaf / cpu / chart / book / globe / code
@@ -111,7 +147,7 @@ window.SITE_CONFIG = {
     nameZh: "王毅乐",
     roleEn: "Principal Investigator",
     roleZh: "课题组负责人",
-    photo: "",
+    photo: "assets/people/yile-wang.jpg",
     // 简介正文在 assets/js/i18n.js 的 pi.bio1 ~ pi.bio4 里
     links: {
       email: "wyl13393401611@126.com",

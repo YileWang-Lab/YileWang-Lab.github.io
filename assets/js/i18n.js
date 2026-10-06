@@ -27,6 +27,7 @@ window.I18N = {
     "nav.team": "负责人",
     "nav.data": "数据与代码",
     "nav.contact": "联系我们",
+    "nav.links": "友情链接",
 
     "hero.badge": "正在持续更新",
     "hero.desc": "我们关注金融市场中的定价、风险与预测问题，用严谨的计量方法与机器学习工具做可复现的实证研究，并把数据与代码开放出来。",
@@ -102,6 +103,11 @@ window.I18N = {
     "data.lead": "我们把整理好的数据、字段字典与处理脚本放在公开仓库里，方便复用与核对。",
     "data.view": "查看仓库",
 
+    "links.eyebrow": "友情链接",
+    "links.title": "相关主页与资料",
+    "links.lead": "课题组之外，这些主页与手册也在持续更新。",
+    "links.view": "前往",
+
     "contact.eyebrow": "联系我们",
     "contact.title": "欢迎交流与合作",
     "contact.lead": "无论是学术合作、数据问题还是加入课题组的意向，都欢迎通过下面的方式联系我们。",
@@ -137,6 +143,7 @@ window.I18N = {
     "nav.team": "Team",
     "nav.data": "Data & Code",
     "nav.contact": "Contact",
+    "nav.links": "Links",
 
     "hero.badge": "Continuously updated",
     "hero.desc": "We study pricing, risk and prediction problems in financial markets — combining careful econometrics with machine learning, and publishing the data and code behind every result.",
@@ -211,6 +218,11 @@ window.I18N = {
     "data.title": "Open research materials",
     "data.lead": "Curated datasets, field dictionaries and processing scripts live in our public repositories, ready to reuse and verify.",
     "data.view": "View repository",
+
+    "links.eyebrow": "Friendly links",
+    "links.title": "Related sites & resources",
+    "links.lead": "Beyond the lab — personal sites and handbooks, kept up to date.",
+    "links.view": "Visit",
 
     "contact.eyebrow": "Contact",
     "contact.title": "Let's work together",

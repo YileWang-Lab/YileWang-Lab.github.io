@@ -811,6 +811,9 @@ button.pub__link { font-family: inherit; cursor: zoom-in; }
 .repo__lang::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--gold-500); }
 .repo__link { margin-left: auto; font-size: .84rem; font-weight: 650; }
 
+/* 友情链接卡片：标题是中文，不用等宽字体，也不强制断词 */
+#link-grid .repo__name { font-family: var(--font-sans); word-break: normal; }
+
 /* ---------------------------------------------------------------- contact */
 .contact-box {
   position: relative; overflow: hidden;

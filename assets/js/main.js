@@ -188,6 +188,7 @@
     renderPI();
     renderMembers();
     renderRepos();
+    renderFriendlyLinks();
     renderContact();
     renderHeroStats();
   }
@@ -318,6 +319,33 @@
           '<span class="repo__lang">' + esc(r.lang || "") + "</span>" +
           (badge ? '<span class="pub__tag">' + esc(badge) + "</span>" : "") +
           '<a class="repo__link" href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(t("data.view")) + icon("arrowRight") + "</a>" +
+        "</div>" +
+        "</article>";
+    }).join("");
+  }
+
+  function renderFriendlyLinks() {
+    var box = $("#link-grid");
+    if (!box) return;
+    var items = Array.isArray(CFG.friendlyLinks) ? CFG.friendlyLinks : [];
+    if (!items.length) {
+      var sec = $("#links");
+      if (sec) sec.hidden = true;
+      return;
+    }
+    box.innerHTML = items.map(function (r) {
+      var title = state.lang === "zh" ? (r.titleZh || r.titleEn) : (r.titleEn || r.titleZh);
+      var desc = state.lang === "zh" ? (r.descZh || r.descEn) : (r.descEn || r.descZh);
+      var badge = state.lang === "zh" ? (r.badgeZh || r.badgeEn) : (r.badgeEn || r.badgeZh);
+      return '<article class="repo reveal">' +
+        '<div class="repo__top">' +
+          '<span class="repo__icon">' + icon(r.icon || "globe", "icon--lg") + "</span>" +
+          '<span class="repo__name">' + esc(title) + "</span>" +
+        "</div>" +
+        '<p class="repo__desc">' + esc(desc) + "</p>" +
+        '<div class="repo__foot">' +
+          (badge ? '<span class="pub__tag">' + esc(badge) + "</span>" : "") +
+          '<a class="repo__link" href="' + esc(r.url) + '" target="_blank" rel="noopener">' + esc(t("links.view")) + icon("arrowRight") + "</a>" +
         "</div>" +
         "</article>";
     }).join("");
