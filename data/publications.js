@@ -100,7 +100,7 @@ window.PUBLICATIONS = [
   {
     titleEn: "Optimal Guarantee Level Optimization for Agricultural Insurance-Futures Based on CRRA Utility Maximization",
     titleZh: "基于 CRRA 效用最大化的农业保险—期货最优保障水平优化",
-    authors: ["**Yile Wang**"],
+    authors: ["Jiayi Wang", "**Yile Wang**†"],
     venue: "Agricultural & Forestry Economics and Management, Vol. 9, Issue 1",
     venueShort: "Agri. & Forestry Econ.",
     year: 2026,
@@ -111,8 +111,8 @@ window.PUBLICATIONS = [
       article: "https://www.clausiuspress.com/article/18020.html"
     },
     tags: ["农业保险", "期货", "CRRA 效用", "风险管理"],
-    noteEn: "Author list could not be retrieved from the publisher — please check.",
-    noteZh: "出版方页面无法访问，合作者名单待确认。"
+    noteEn: "Clausius Press · Corresponding author",
+    noteZh: "Clausius Press · 通讯作者"
   },
 
   /* ======================= 2025 ======================= */
