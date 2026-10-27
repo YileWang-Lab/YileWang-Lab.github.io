@@ -1,312 +1,129 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0b1a33">
-
-<title>Yile Wang Lab · 官网</title>
-<meta name="description" content="Yile Wang 课题组官网：经济学、金融工程与机器学习方向的研究团队，展示已录用与已发表论文、研究数据与开源代码。">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yile Wang Lab · 王毅乐课题组</title>
+<meta name="description" content="王毅乐课题组：将前沿机器学习方法与计量经济学、金融学相结合的研究单位。">
 <meta name="author" content="Yile Wang Lab">
 
-<!-- Open Graph / 分享卡片 -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Yile Wang Lab">
-<meta property="og:description" content="Economics, Financial Engineering & Machine Learning — accepted and published papers, open data and code.">
+<meta property="og:title" content="Yile Wang Lab · 王毅乐课题组">
+<meta property="og:description" content="Modern machine learning meets econometrics and finance.">
 <meta property="og:url" content="https://yilewang-lab.github.io/">
 <meta property="og:site_name" content="Yile Wang Lab">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://yilewang-lab.github.io/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b1a33'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Georgia,serif' font-weight='700' fill='%23ddbe5f' text-anchor='middle'%3EYW%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/academic.css">
 
-<link rel="stylesheet" href="assets/css/style.css">
-
-<!-- 渐进增强开关：只有 JS 可用时才隐藏待入场元素，避免无 JS / 脚本报错时页面空白 -->
-<script>
-  document.documentElement.classList.add("js");
-  window.addEventListener("error", function () {
-    document.documentElement.classList.remove("js");
-  });
-</script>
-
-<!-- 结构化数据，帮助搜索引擎理解这是研究机构站点 -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ResearchOrganization",
   "name": "Yile Wang Lab",
+  "alternateName": "王毅乐课题组",
   "url": "https://yilewang-lab.github.io/",
-  "description": "Economics, financial engineering and machine learning research group.",
+  "description": "Modern machine learning meets econometrics and finance.",
   "sameAs": ["https://github.com/YileWang-Lab"]
 }
 </script>
 </head>
 
 <body>
-<a class="skip-link" href="#main" data-i18n="a11y.skip">跳到主要内容</a>
 
-<!-- ==================================================== header -->
-<header class="site-header">
-  <div class="wrap">
-    <a class="brand" href="#top">
-      <span class="brand__mark" data-cfg="monogram" aria-hidden="true">YWL</span>
-      <span class="brand__text">
-        <span class="brand__name" data-cfg="labName">Yile Wang Lab</span>
-        <span class="brand__sub">Research Group</span>
-      </span>
-    </a>
-
-    <nav class="nav" id="site-nav" aria-label="主导航" data-i18n-attr="aria-label:a11y.nav">
-      <ul class="nav__list">
-        <li><a class="nav__link" href="#about"    data-i18n="nav.about">关于</a></li>
-        <li><a class="nav__link" href="#research" data-i18n="nav.research">研究方向</a></li>
-        <li><a class="nav__link" href="#pubs"     data-i18n="nav.pubs">论文成果</a></li>
-        <li><a class="nav__link" href="#team"     data-i18n="nav.team">团队成员</a></li>
-        <li><a class="nav__link" href="#data"     data-i18n="nav.data">数据与代码</a></li>
-        <li><a class="nav__link" href="#contact"  data-i18n="nav.contact">联系我们</a></li>
-        <li><a class="nav__link" href="#links"    data-i18n="nav.links">友情链接</a></li>
-      </ul>
-    </nav>
-
-    <div class="header-tools">
-      <div class="lang-switch" role="group" aria-label="切换语言" data-i18n-attr="aria-label:a11y.lang">
-        <button type="button" data-lang="zh" aria-pressed="true">中文</button>
-        <button type="button" data-lang="en" aria-pressed="false">EN</button>
-      </div>
-
-      <button type="button" class="toggle" id="theme-toggle" aria-pressed="false"
-              title="切换深色 / 浅色主题" data-i18n-attr="title:a11y.theme;aria-label:a11y.theme">
-        <span class="toggle__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg></span>
-      </button>
-
-      <button type="button" class="toggle nav-toggle" id="nav-toggle"
-              aria-expanded="false" aria-controls="site-nav"
-              data-i18n-attr="aria-label:a11y.menu">
-        <span class="toggle__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<main id="main">
-
-  <!-- ================================================== hero -->
-  <section class="hero" id="top">
-    <div class="wrap">
-      <span class="hero__badge">
-        <span class="dot" aria-hidden="true"></span>
-        <span data-i18n="hero.badge">正在持续更新</span>
-      </span>
-
-      <h1 class="hero__title" data-cfg="labName">Yile Wang Lab</h1>
-      <p class="hero__tagline" data-cfg="tagline">经济学 · 金融工程 · 机器学习</p>
-      <p class="hero__desc" data-i18n="hero.desc">我们关注金融市场中的定价、风险与预测问题。</p>
-
-      <div class="hero__actions">
-        <a class="btn btn--primary" href="#pubs">
-          <svg class="icon icon--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
-          <span data-i18n="hero.cta_pubs">查看论文成果</span>
-        </a>
-        <a class="btn btn--ghost" href="#contact">
-          <svg class="icon icon--lg" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2.6 6.5 9.4 6.4 9.4-6.4"/></svg>
-          <span data-i18n="hero.cta_contact">联系我们</span>
-        </a>
-      </div>
-
-      <div class="hero__stats" id="hero-stats"></div>
-    </div>
-  </section>
-
-  <!-- ================================================== about -->
-  <section class="section" id="about">
-    <div class="wrap">
-      <div class="about-grid">
-        <div>
-          <div class="section-head reveal">
-            <p class="eyebrow" data-i18n="about.eyebrow">关于我们</p>
-            <h2 class="section-title" data-i18n="about.title">让金融研究可复现、可复用</h2>
-          </div>
-          <div class="prose reveal">
-            <p data-i18n-html data-i18n="about.p1">课题组围绕资产定价、金融风险与金融机器学习展开研究。</p>
-            <p data-i18n-html data-i18n="about.p2">因此除了论文，我们把清洗好的双语数据一并整理公开。</p>
-            <p data-i18n-html data-i18n="about.p3">目前课题组的研究覆盖期权定价与对冲等方向。</p>
-          </div>
-        </div>
-
-        <aside class="fact-card reveal">
-          <h3 data-i18n="about.facts">基本信息</h3>
-          <ul class="fact-list" id="fact-list"></ul>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================== story（写在前面） -->
-  <section class="section" id="story">
-    <div class="wrap">
-      <div class="story reveal">
-        <span class="story__mark" aria-hidden="true">“</span>
-        <div class="story__body">
-          <p class="eyebrow" data-i18n="story.eyebrow">写在前面</p>
-          <h2 class="section-title" data-i18n="story.title">我们的经验，来自没人指导的那几年</h2>
-          <div class="prose prose--story">
-            <p data-i18n-html data-i18n="story.p1">大一那年，我联系了一位老师，说我想做科研。</p>
-            <p data-i18n-html data-i18n="story.p2">后来我才慢慢明白：培养一个本科生的科研能力是一件漫长的事。</p>
-            <p data-i18n-html data-i18n="story.p3">所以我把这些经验整理出来，放在这里。</p>
-          </div>
-          <p class="story__sign" data-i18n="story.sign">—— 王毅乐</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================== research -->
-  <section class="section section--alt" id="research">
-    <div class="wrap">
-      <div class="section-head section-head--center reveal">
-        <p class="eyebrow" data-i18n="research.eyebrow">研究方向</p>
-        <h2 class="section-title" data-i18n="research.title">我们关心的问题</h2>
-        <p class="section-lead" data-i18n="research.lead">从衍生品定价到系统性风险。</p>
-      </div>
-      <div class="research-grid" id="research-grid"></div>
-    </div>
-  </section>
-
-  <!-- ================================================== publications -->
-  <section class="section" id="pubs">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow" data-i18n="pubs.eyebrow">论文成果</p>
-        <h2 class="section-title" data-i18n="pubs.title">已录用与已发表论文</h2>
-        <p class="section-lead" data-i18n="pubs.lead">按年份倒序排列，支持搜索与筛选。</p>
-        <p class="pub-alt-link"><a href="publications.html" data-i18n="pubs.classic">按经典版式浏览全部论文 →</a></p>
-      </div>
-
-      <div class="pub-toolbar reveal" id="pub-toolbar">
-        <div class="pub-search">
-          <span class="pub-search__icon" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7.5"/><path d="m20.8 20.8-4.4-4.4"/></svg></span>
-          <label class="sr-only" for="pub-search" data-i18n="pubs.search">搜索论文</label>
-          <input type="search" id="pub-search" autocomplete="off"
-                 placeholder="搜索标题、作者、期刊或关键词…" data-i18n-attr="placeholder:pubs.search">
-        </div>
-        <div class="chips" id="filter-type" role="group" aria-label="类型" data-i18n-attr="aria-label:pubs.filter.type"></div>
-        <div class="chips" id="filter-year" role="group" aria-label="年份" data-i18n-attr="aria-label:pubs.filter.year"></div>
-      </div>
-
-      <p class="pub-count" id="pub-count" aria-live="polite" hidden></p>
-      <div id="pub-list"></div>
-    </div>
-  </section>
-
-  <!-- ================================================== 团队负责人 -->
-  <section class="section section--alt" id="team">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow" data-i18n="pi.eyebrow">团队负责人</p>
-        <h2 class="section-title" id="pi-name">王毅乐</h2>
-        <p class="section-lead" id="pi-lead" data-i18n="pi.lead">从本科阶段开始独立做研究。</p>
-      </div>
-
-      <div class="pi-grid">
-        <aside class="pi-card reveal" id="pi-card"></aside>
-        <div class="pi-bio reveal" id="pi-bio"></div>
-      </div>
-
-      <div id="team-members" hidden>
-        <h3 class="team-sub" data-i18n="pi.members">其他成员</h3>
-        <div class="team-grid" id="team-grid"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================== data & code -->
-  <section class="section" id="data">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow" data-i18n="data.eyebrow">数据与代码</p>
-        <h2 class="section-title" data-i18n="data.title">开放的研究材料</h2>
-        <p class="section-lead" data-i18n="data.lead">我们把整理好的数据、字段字典与处理脚本放在公开仓库里。</p>
-      </div>
-      <div class="repo-grid" id="repo-grid"></div>
-    </div>
-  </section>
-
-  <!-- ================================================== contact -->
-  <section class="section section--alt" id="contact">
-    <div class="wrap">
-      <div class="contact-box reveal">
-        <div class="section-head" style="margin-bottom:0">
-          <p class="eyebrow" data-i18n="contact.eyebrow">联系我们</p>
-          <h2 class="section-title" data-i18n="contact.title">欢迎交流与合作</h2>
-          <p class="section-lead" data-i18n="contact.lead">无论是学术合作、数据问题还是加入课题组的意向，都欢迎联系我们。</p>
-        </div>
-        <div class="contact-lines" id="contact-lines"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================================================== 友情链接 -->
-  <section class="section" id="links">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow" data-i18n="links.eyebrow">友情链接</p>
-        <h2 class="section-title" data-i18n="links.title">相关主页与资料</h2>
-        <p class="section-lead" data-i18n="links.lead">课题组之外，这些主页与手册也在持续更新。</p>
-      </div>
-      <div class="repo-grid" id="link-grid"></div>
-    </div>
-  </section>
-
-</main>
-
-<!-- ==================================================== footer -->
-<footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <span class="brand__mark" data-cfg="monogram" aria-hidden="true">YWL</span>
-        <span data-cfg="labName">Yile Wang Lab</span>
-      </div>
-      <nav aria-label="页脚导航" data-i18n-attr="aria-label:footer.nav">
-        <ul class="footer-nav">
-          <li><a href="#about"    data-i18n="nav.about">关于</a></li>
-          <li><a href="#research" data-i18n="nav.research">研究方向</a></li>
-          <li><a href="#pubs"     data-i18n="nav.pubs">论文成果</a></li>
-          <li><a href="#team"     data-i18n="nav.team">团队成员</a></li>
-          <li><a href="#data"     data-i18n="nav.data">数据与代码</a></li>
-          <li><a href="#contact"  data-i18n="nav.contact">联系我们</a></li>
-          <li><a href="#links"    data-i18n="nav.links">友情链接</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="footer-bottom">
-      <p>© <span id="year">2026</span> <span data-cfg="affiliation">Yile Wang Lab</span>. <span data-i18n="footer.rights">版权所有。</span></p>
-      <p data-cfg="footerNote" data-i18n="footer.built">由纯 HTML / CSS / JavaScript 构建。</p>
-    </div>
-  </div>
-</footer>
-
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-<!-- 灯箱：用于放大查看期刊横幅与录用证明 -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" hidden
-     data-i18n-attr="aria-label:a11y.lightbox">
-  <button type="button" class="lightbox__close" id="lightbox-close"
-          data-i18n-attr="aria-label:a11y.close">
-    <svg class="icon icon--lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
-  </button>
-  <figure class="lightbox__figure">
-    <img class="lightbox__img" id="lightbox-img" alt="">
-    <figcaption class="lightbox__caption" id="lightbox-caption"></figcaption>
-  </figure>
+<!-- ==================================================== 导航 -->
+<div class="container nav-card">
+  <h2>
+    <a href="#about" data-i18n="nav.about">关于</a>&nbsp;&middot;&nbsp;<a href="#research" data-i18n="nav.research">研究方向</a>&nbsp;&middot;&nbsp;<a href="publications.html" data-i18n="nav.pubs">论文成果</a>&nbsp;&middot;&nbsp;<a href="#team" data-i18n="nav.team">负责人</a>&nbsp;&middot;&nbsp;<a href="#data" data-i18n="nav.data">数据与代码</a>&nbsp;&middot;&nbsp;<a href="#links" data-i18n="nav.links">友情链接</a>&nbsp;&middot;&nbsp;<a href="#contact" data-i18n="nav.contact">联系我们</a>
+  </h2>
+  <p class="lang"><a href="#" data-lang="zh">中文</a> / <a href="#" data-lang="en">EN</a></p>
 </div>
 
-<!-- 数据文件（要改内容，改这两个即可） -->
+<!-- ==================================================== 照片 + 简介 -->
+<div class="container" id="top">
+  <div id="sidebar">
+    <img id="me" src="assets/people/yile-wang.jpg" alt="王毅乐">
+  </div>
+  <div id="bio">
+    <h1>Yile Wang Lab <span class="cn-name">王毅乐课题组</span></h1>
+    <p class="sub" data-i18n="acad.tagline">经济学 · 金融工程 · 机器学习</p>
+    <p class="sub" data-i18n="acad.focus">将前沿机器学习方法与计量经济学、金融学相结合。</p>
+    <p class="sub" data-i18n="acad.open">欢迎所有热爱科研的同学。</p>
+    <p>Email: <a href="mailto:wyl13393401611@126.com">wyl13393401611@126.com</a></p>
+    <p class="external">
+      <a href="https://karlheinrich-jpg.github.io/" class="first" data-i18n="acad.homepage">个人主页</a>
+      <a href="https://karlheinrich-jpg.github.io/research-guide-gitbook/" data-i18n="acad.gitbook">科研手册</a>
+      <a href="https://github.com/KarlHeinrich-jpg" data-i18n="acad.github">个人 GitHub</a>
+      <a href="https://github.com/YileWang-Lab" data-i18n="acad.orggithub">课题组 GitHub</a>
+    </p>
+  </div>
+</div>
+
+<!-- ==================================================== 正文 -->
+<div class="container">
+
+  <div class="section" id="about">
+    <h2 data-i18n="nav.about">关于</h2>
+    <p data-i18n-html data-i18n="about.p1">课题组围绕资产定价、金融风险与金融机器学习展开研究。</p>
+    <p data-i18n-html data-i18n="about.p2">除了论文，我们把清洗好的双语数据一并整理公开。</p>
+    <p data-i18n-html data-i18n="about.p3">目前课题组的研究覆盖期权定价与对冲等方向。</p>
+  </div>
+
+  <div class="section" id="research">
+    <h2 data-i18n="nav.research">研究方向</h2>
+    <div id="research-list"></div>
+  </div>
+
+  <div class="section" id="pubs">
+    <h2 data-i18n="acad.selected">精选论文</h2>
+    <div id="pub-selected"></div>
+    <p><a href="publications.html" data-i18n="acad.allpubs">全部论文 →</a></p>
+  </div>
+
+  <div class="section" id="team">
+    <h2 data-i18n="nav.team">负责人</h2>
+    <p><b>王毅乐 · Yile Wang</b>，<span data-i18n="pi.role">课题组负责人</span>。</p>
+    <p data-i18n-html data-i18n="pi.bio1">王毅乐，课题组负责人，本科阶段即独立开展研究。</p>
+    <p data-i18n-html data-i18n="pi.bio2">已发表的工作覆盖……</p>
+    <p data-i18n-html data-i18n="pi.bio3">他把严谨的数学推理看作可信机器学习的基石。</p>
+    <p data-i18n-html data-i18n="pi.bio4">他坚持研究应当能被别人重新做一遍。</p>
+    <p data-i18n-html data-i18n="pi.bio5">他欢迎跨学科的合作，也欢迎对科研感兴趣的同学直接写信给他。</p>
+    <p><a href="mailto:wyl13393401611@126.com">wyl13393401611@126.com</a></p>
+  </div>
+
+  <div class="section" id="data">
+    <h2 data-i18n="nav.data">数据与代码</h2>
+    <p class="lead" data-i18n="data.lead">我们把整理好的数据、字段字典与处理脚本放在公开仓库里，方便复用与核对。</p>
+    <div id="repo-list"></div>
+  </div>
+
+  <div class="section" id="links">
+    <h2 data-i18n="nav.links">友情链接</h2>
+    <p class="lead" data-i18n="links.lead">课题组之外，这些主页与手册也在持续更新。</p>
+    <div id="link-list"></div>
+  </div>
+
+  <div class="section" id="contact">
+    <h2 data-i18n="nav.contact">联系我们</h2>
+    <p class="lead" data-i18n="contact.lead">无论是学术合作、数据问题还是加入课题组的意向，都欢迎联系我们。</p>
+    <p>Email: <a href="mailto:wyl13393401611@126.com">wyl13393401611@126.com</a></p>
+    <p><a href="https://github.com/YileWang-Lab">https://github.com/YileWang-Lab</a></p>
+  </div>
+
+</div>
+
+<!-- ==================================================== 页脚 -->
+<div class="site-footer">
+  <p>© <span id="year">2026</span> 王毅乐课题组 · Yile Wang Lab</p>
+  <p data-i18n="footer.built">由纯 HTML / CSS / JavaScript 构建 —— 无外部依赖、无追踪脚本。</p>
+</div>
+
 <script src="data/site-config.js"></script>
 <script src="data/publications.js"></script>
-<!-- 界面文案与逻辑 -->
 <script src="assets/js/i18n.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="assets/js/pub-render.js"></script>
+<script src="assets/js/academic.js"></script>
 </body>
 </html>
