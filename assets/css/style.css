@@ -193,6 +193,11 @@ button { font: inherit; color: inherit; cursor: pointer; }
   line-height: 1.75;
 }
 
+/* 指向经典版式论文页（publications.html）的入口 */
+.pub-alt-link { margin: 10px 0 0; font-size: .92rem; font-weight: 650; }
+.pub-alt-link a { text-decoration: none; }
+.pub-alt-link a:hover { text-decoration: underline; }
+
 /* ---------------------------------------------------------------- header */
 .site-header {
   position: sticky; top: 0; z-index: 100;
